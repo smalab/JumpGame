@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class playerControl : MonoBehaviour {
-	public float power;
-	public float POWERPLUS = 100.0f;
+	private float power;
+	public float POWERPLUS = 300.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -13,7 +13,6 @@ public class playerControl : MonoBehaviour {
 	void Update () {
 		if( Input.GetKey(KeyCode.Space) ) {	// 左ボタンが押されている間
 			power += POWERPLUS * Time.deltaTime;	// 力を溜める
-			Debug.Log("Pressed space key.");
 		}
 		
 		if( Input.GetKeyUp(KeyCode.Space) ) {	// 左ボタンが離されたら

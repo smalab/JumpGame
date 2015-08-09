@@ -5,9 +5,17 @@ public class goalControl : MonoBehaviour {
 	// ぶつかっているか、いないかを格納
 	private bool is_collided = false;
 	
+	// ゴールの位置を設定
+	public float GOAL_MIN = 5.0f;	// 最小値
+	public float GOAL_MAX = 10.0f;	// 最大値
+	
 	// Use this for initialization
 	void Start () {
-	
+		// GOAL_MIN － MAXの間のランダムな値を取得
+		float rnd = Random.Range(GOAL_MIN, GOAL_MAX);
+		
+		// GoalのX位置をランダムな値に
+		this.transform.position = new Vector3(rnd, -1.0f, 0.0f);
 	}
 	
 	// Update is called once per frame
