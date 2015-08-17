@@ -68,4 +68,20 @@ public class MapCreator : MonoBehaviour {
 		this.last_block.is_created = true;
 	}
 	
+		public bool isDelete(GameObject block_object) {
+		bool ret = false;	// 戻り値
+
+		// Playerから半画面分左の位置
+		// これが消えるべきか否かを決めるしきい値
+		float left_limit = this.player.transform.position.x
+			- BLOCK_WIDTH * ((float)BLOCK_NUM_IN_SCREEN / 2.0f);
+
+		// ブロックの位置がしきい値より小さい（左）なら
+		if (block_object.transform.position.x < left_limit) {
+			ret = true;	// 戻り値をtrue(消す)に
+		}
+
+		return(ret);
+	}
+	
 }
