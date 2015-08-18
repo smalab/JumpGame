@@ -26,11 +26,105 @@ public class PlayerControl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+	this.next_step = STEP.RUN;	// ゲーム開始を走る状態に
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		this.transform.Translate( new Vector3(0.0f, 0.0f, 3.0f * Time.deltaTime) );
+		Vector3 velocity = this.GetComponent<Rigidbody>().velocity;	// 速度を設定
+		this.check_landed();	// 着地状態かどうかをチェック
+		this.step_timer += Time.deltaTime;	// 経過時間を進める
+
+		// 次の状態が決まっていなければ、状態の変化を調べる
+		if(this.next_step == STEP.NONE) {
+			switch(this.step) {	// Playerの現在の状態で分岐
+				case STEP.RUN:	// 走行中の場合
+					if(! this.is_landed) {
+						// 走行中で、着地していない場合は何もしない
+					} else {
+						if(Input.GetMouseButtonDown(0)) {
+							// 走行中で着地していて、左ボタンが押されたら
+							// 次の状態をジャンプに変更
+							this.next_step = STEP.JUMP;
+						}
+					}
+					break;
+				case STEP.JUMP:	// ジャンプ中の場合
+					if(this.is_landed) {
+						// ジャンプ中で着地していたら、次の状態を走行中に変更
+						this.next_step = STEP.RUN;
+					}
+					break;
+			}
+		}
+
+		// 次の状態が状態情報なし以外の間
+		while(this.next_step != STEP.NONE) {
+			this.step = this.next_step;	// 現在の状態を次の状態に更新
+			this.next_step = STEP.NONE;	// 次の情愛を状態なしに変更
+			switch(this.step) {	// 更新された現在の状態が
+				case STEP.JUMP:	// ジャンプの場合
+					// ジャンプの高さからジャンプの初速を計算
+					velocity.y = Mathf.Sqrt(2.0f * 9.8f * PlayerControl.JUMP_HEIGHT_MAX);
+					// ボタンが離されたフラグをクリアする
+					this.is_key_released = false;
+					break;
+			}
+			this.step_timer = 0.0f;	// 状態が変化したので、経過時間をリセット
+		}
+
+		// 状態ごとの、舞フレームの更新処理
+		switch(this.step) {
+			case STEP.RUN:	// 走行中の場合
+				// 速度を上げる
+				velocity.x += PlayerControl.ACCELERATION * Time.deltaTime;
+				// 速度が最高速度の制限を超えたら
+				if(Mathf.Abs(velocity.x) > PlayerControl.SPEED_MAX) {
+					// 最高速度の制限以下に保つ
+					velocity.x *= PlayerControl.SPEED_MAX / Mathf.Abs(velocity.x);
+				}
+				break;
+			case STEP.JUMP:	// ジャンプ中の場合
+				do {
+					// ボタンが離された瞬間でなかった場合
+					if(! Input.GetMouseButtonUp(0)) {
+						break;
+					}
+					// 減速済みなら　(複数回減速しないように)
+					if(this.is_key_released) {
+						break;
+					}
+					// 上下方向の速度が0以下なら（下降中なら）
+					if(velocity.y <= 0.0f) {
+						break;
+					}
+				}
+		}
 	}
+
+	private void check_landed() {
+		this.is_landed = false;
+
+		do {
+			Vector3 s = this.transform.position;	// Playerの現在位置
+			Vector3 e = s + Vector3.down * 1.0f;	// sから1.0fに移動した位置
+
+			RaycastHit hit;
+			if(! Physics.Linecast(s, e, out hit)) {	// sからeの間に何もない場合
+				break;	// 何もせずdo-whileループを抜ける
+			}
+
+			// sからeの間に何かがあった場合の処理
+			if(this.step == STEP.JUMP) {	// 現在がジャンプ状態ならば
+				// 経過時間が3.0f未満ならば
+				if(this.step_timer < Time.deltaTime * 3.0f) {
+					break;
+				}
+			}
+
+			// sからeの間に何かがあり、JUMP直後でない場合のみ以下を実行する
+			this.is_landed = true;
+		} while(false);
+	}
+
 }
