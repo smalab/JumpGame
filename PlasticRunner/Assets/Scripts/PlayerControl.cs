@@ -98,8 +98,16 @@ public class PlayerControl : MonoBehaviour {
 					if(velocity.y <= 0.0f) {
 						break;
 					}
-				}
+					// ボタンが離されていて、上昇中なら減速開始
+					// ジャンプの上昇はここで終了
+					velocity.y *= JUMP_KEY_RELEASE_REDUCE;
+					this.is_key_released = true;
+				} while(false);
+				break;
 		}
+		// Rigidbodyの速度を上記で求めた速度で更新
+		// この行は状態にかかわらず毎回実行される
+		this.GetComponent<Rigidbody>().velocity = velocity;
 	}
 
 	private void check_landed() {
