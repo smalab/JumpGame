@@ -1,5 +1,32 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
+public class LevelData {
+	public struct Range {	// 範囲を表す構造体
+		public int min;
+		public int max;
+	};
+
+	public float end_time;
+	public float player_speed;
+
+	public Range floor_count;
+	public Range hole_count;
+	public Range height_diff;	// 足場の高さの範囲
+
+	public LevelData(){
+		// レベルデータの初期化
+		this.end_time = 15.0f;
+		this.player_speed = 6.0f;
+		this.floor_count.min = 10;
+		this.floor_count.max = 10;
+		this.hole_count.min = 2;
+		this.hole_count.max = 6;
+		this.height_diff.min = 0;
+		this.height_diff.max = 0;
+	}
+}
 
 public class LevelControl : MonoBehaviour {
 	// ブロックに関する構造体
@@ -16,6 +43,11 @@ public class LevelControl : MonoBehaviour {
 
 	public int block_count = 0;			// 作成したブロックの総数
 	public int level = 0;				// 難易度
+
+	private List<LevelData> level_datas = new List<LevelData>();
+
+	public int HEIGHT_MAX = 20;
+	public int HEIGHT_MIN = -4;
 
 	private void clear_next_block(ref CreationInfo block) {
 		// 受け取ったブロック(block)の中身を初期化

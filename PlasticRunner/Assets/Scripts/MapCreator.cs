@@ -16,6 +16,8 @@ public class MapCreator : MonoBehaviour {
 	public static float BLOCK_HEIGHT = 0.2f;		// ブロックの高さ
 	public static int	BLOCK_NUM_IN_SCREEN = 24;	// 画面内に収まるブロックの個数
 
+	private LevelControl level_control = null;
+
 	// ブロックに関する情報をまとめて管理するための構造体
 	private struct FloorBlock {
 		public bool is_created;		// ブロックが作成済みか否か
@@ -32,6 +34,9 @@ public class MapCreator : MonoBehaviour {
 			("Player").GetComponent<PlayerControl>();
 		this.last_block.is_created = false;
 		this.block_creator = this.gameObject.GetComponent<BlockCreator>();
+
+		this.level_control = new LevelControl();
+		this.level_control.initialize();
 	}
 
 	// Update is called once per frame
@@ -70,7 +75,22 @@ public class MapCreator : MonoBehaviour {
 
 		// BlockCreatorスクリプトのcreateBlock()メソッドに作成指示
 		// これまでのコードで設定したblock_positionを渡す
-		this.block_creator.createBlock(block_position);
+		//this.block_creator.createBlock(block_position);
+
+		this.level_control.update();	// LevelControlを更新
+
+		// level_controlに置かれたcurrent_block（今作るブロックの情報）の
+		// height（高さ）をシーン上の座標に変換
+		block_position.y = level_control.current_block.height * BLOCK_HEIGHT;
+
+		//今回作るブロックに関する情報を変数currentに格納
+		LevelControl.CreationInfo current = this.level_control.current_block;
+
+		// 今回作るブロックが床なら
+		if(current.block_type == Block.TYPE.FLOOR) {
+			// block_positionの位置にブロックを実際に作成
+			this.block_creator.createBlock(block_position);
+		}
 
 		// last_blockの位置を今回の位置に更新
 		this.last_block.position = block_position;
