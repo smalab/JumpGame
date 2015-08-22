@@ -59,7 +59,7 @@ public class PlayerControl : MonoBehaviour {
 
 
 	void Update() {
-		Vector3 velocity = this.rigidbody.velocity; // 速度を設定.
+		Vector3 velocity = this.GetComponent<Rigidbody>().velocity; // 速度を設定.
 		this.check_landed(); // 着地状態かどうかをチェック.
 
 
@@ -128,7 +128,7 @@ public class PlayerControl : MonoBehaviour {
 			if(Mathf.Abs(velocity.x) > PlayerControl.SPEED_MAX) {
 				// 最高速度の制限以下に保つ.
 				velocity.x *= PlayerControl.SPEED_MAX /
-					Mathf.Abs(this.rigidbody.velocity.x);
+					Mathf.Abs(this.GetComponent<Rigidbody>().velocity.x);
 			}
 			break;
 
@@ -167,7 +167,7 @@ public class PlayerControl : MonoBehaviour {
 
 		// Rigidbodyの速度を、上記で求めた速度で更新.
 		// （この行は、状態にかかわらず毎回実行される）.
-		this.rigidbody.velocity = velocity;
+		this.GetComponent<Rigidbody>().velocity = velocity;
 	}
 
 
