@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections;
 
 public class PlayerControl : MonoBehaviour {
+	public float current_speed = 0.0f;	// 現在のスピード
+	public LevelControl level_control = null;	// LevelControlを保持
 	public static float ACCELERATION = 10.0f;	// 加速度
 	public static float SPEED_MIN = 4.0f;	// 速度の最小値
 	public static float SPEED_MAX = 8.0f;	// 速度の最大値
@@ -22,8 +24,10 @@ public class PlayerControl : MonoBehaviour {
 
 	public float step_timer = 0.0f;	// 経過時間
 	private bool is_landed = false;	// 着地しているかの判定
-	private bool is_collided = false;	// 何かとぶつかっているかの判定
+	//private bool is_collided = false;	// 何かとぶつかっているかの判定
 	private bool is_key_released = false;	// ボタンが離されているかの判定
+	private float click_timer = -1.0f;	// ボタンが押されてからの時間
+	private float CLICK_CRACE_TIME = 0.5f;	// ジャンプしたい意志を受け取る時間
 
 	// Use this for initialization
 	void Start () {
@@ -33,6 +37,7 @@ public class PlayerControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Vector3 velocity = this.GetComponent<Rigidbody>().velocity;	// 速度を設定
+		this.current_speed = this.level_control.getPlayerSpeed();
 		this.check_landed();	// 着地状態かどうかをチェック
 
 		switch (this.step) {
@@ -47,19 +52,25 @@ public class PlayerControl : MonoBehaviour {
 
 		this.step_timer += Time.deltaTime;	// 経過時間を進める
 
+		if(Input.GetMouseButtonDown(0)) {	// ボタンが押されたら
+			this.click_timer = 0.0f;	// タイマーをリセット
+		} else {
+			if(this.click_timer >= 0.0f) {	// そうでなければ
+				this.click_timer += Time.deltaTime;	// 経過時間を加算
+			}
+		}
+
 		// 次の状態が決まっていなければ、状態の変化を調べる
 		if(this.next_step == STEP.NONE) {
 			switch(this.step) {	// Playerの現在の状態で分岐
 				case STEP.RUN:	// 走行中の場合
-					if(! this.is_landed) {
-						// 走行中で、着地していない場合は何もしない
-					} else {
-						if(Input.GetMouseButtonDown(0)) {
-							// 走行中で着地していて、左ボタンが押されたら
-							// 次の状態をジャンプに変更
-							this.next_step = STEP.JUMP;
+					// click_timerが0以上、CLICK_GRACE_TIME以下の場合
+					if(0.0f <= this.click_timer && this.click_timer <= CLICK_CRACE_TIME) {
+						if(this.is_landed) {	// 着地しているならば
+							this.click_timer = -1.0f;	// ボタンが押されていないことを表す-1.0fに
+							this.next_step = STEP.JUMP;	// ジャンプ状態に
+							}
 						}
-					}
 					break;
 				case STEP.JUMP:	// ジャンプ中の場合
 					if(this.is_landed) {
@@ -85,15 +96,15 @@ public class PlayerControl : MonoBehaviour {
 			this.step_timer = 0.0f;	// 状態が変化したので、経過時間をリセット
 		}
 
-		// 状態ごとの、舞フレームの更新処理
+		// 状態ごとの、毎フレームの更新処理
 		switch(this.step) {
 			case STEP.RUN:	// 走行中の場合
 				// 速度を上げる
 				velocity.x += PlayerControl.ACCELERATION * Time.deltaTime;
-				// 速度が最高速度の制限を超えたら
-				if(Mathf.Abs(velocity.x) > PlayerControl.SPEED_MAX) {
-					// 最高速度の制限以下に保つ
-					velocity.x *= PlayerControl.SPEED_MAX / Mathf.Abs(velocity.x);
+				// 計算結果のスピードが設定すべきスピードを超えていたら
+				if(Mathf.Abs(velocity.x) > this.current_speed) {
+					// 超えないように調整
+					velocity.x *= this.current_speed / Mathf.Abs(velocity.x);
 				}
 				break;
 			case STEP.JUMP:	// ジャンプ中の場合
@@ -152,6 +163,16 @@ public class PlayerControl : MonoBehaviour {
 			// sからeの間に何かがあり、JUMP直後でない場合のみ以下を実行する
 			this.is_landed = true;
 		} while(false);
+	}
+
+	public bool isPlayEnd() {	// ゲームの終了を判定するメソッド
+		bool ret = false;
+		switch(this.step) {
+			case STEP.MISS:	// MISS状態の場合
+				ret = true;	// ゲームオーバー(true)を返す
+				break;
+		}
+		return(ret);
 	}
 
 }

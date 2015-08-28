@@ -41,6 +41,7 @@ public class MapCreator : MonoBehaviour {
 		this.level_control.initialize();
 		this.level_control.loadLevelData(this.level_data_text);
 		this.game_root = this.gameObject.GetComponent<GameRoot>();
+		this.player.level_control = this.level_control;
 	}
 
 	// Update is called once per frame

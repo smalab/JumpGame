@@ -81,9 +81,46 @@ public class LevelControl : MonoBehaviour {
 			}
 		}
 		this.level = i;
+
+		current.block_type = Block.TYPE.FLOOR;
+		current.max_count = 1;
+
+		if(this.block_count >= 10) {
+			// 現在のレベル用のレベルデータを取得
+			LevelData level_data;
+			level_data = this.level_datas[this.level];
+
+			switch (previous.block_type) {
+				case Block.TYPE.FLOOR:	// 前回のブロックが床の場合
+					current.block_type = Block.TYPE.HOLE;	// 今回は穴を作る
+
+					// 穴の長さの最小・最大値の間のランダムな値
+					current.max_count = Random.Range(level_data.hole_count.min,
+						level_data.hole_count.max);
+
+					current.height = previous.height;	// 前回と同じ高さに
+					break;
+				case Block.TYPE.HOLE:	// 前回のブロックが穴の場合
+					current.block_type= Block.TYPE.FLOOR;	// 今回は床を作る
+
+					// 床の長さの最小・最大値の間のランダムな値
+					current.max_count = Random.Range(level_data.floor_count.min,
+						level_data.floor_count.max);
+
+					// 床の高さの最小・最大値を求める
+					int height_min = previous.height + level_data.height_diff.min;
+					int height_max = previous.height + level_data.height_diff.max;
+					height_min = Mathf.Clamp(height_min, HEIGHT_MIN, HEIGHT_MAX);
+					height_max = Mathf.Clamp(height_max, HEIGHT_MIN, HEIGHT_MAX);
+
+					// 床の高さの最小・最大値の間のランダムな値
+					current.height = Random.Range(height_min, height_max);
+					break;
+			}
+		}
 	}
 
-	public void update() {
+	public void update(float passage_time) {
 		// 今回作ったブロックの個数をインクリメント
 		this.current_block.current_count++;
 
@@ -95,7 +132,8 @@ public class LevelControl : MonoBehaviour {
 			// 次に作るべきブロックの内容を初期化
 			this.clear_next_block(ref this.next_block);
 			// 次に作るべきブロックを設定
-			this.update_level(ref this.next_block, this.current_block);
+			//this.update_level(ref this.next_block, this.current_block);
+			this.update_level(ref this.next_block, this.current_block, passage_time);
 		}
 		this.block_count++;	// ブロックの総数をインクリメント
 	}
@@ -172,6 +210,10 @@ public class LevelControl : MonoBehaviour {
 			// level_datasにデフォルトのLevelDataを1つ追加
 			this.level_datas.Add(new LevelData());
 		}
+	}
+
+	public float getPlayerSpeed() {
+		return(this.level_datas[this.level].player_speed);
 	}
 
 }
