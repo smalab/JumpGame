@@ -38,7 +38,7 @@ public class GetMicVolume : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		var audio = GetComponent<AudioSource>();
-		audio.clip = Microphone.Start("testmic (USB2.0 MIC)", true, 999, 44100);
+		audio.clip = Microphone.Start(null, true, 999, 44100);
 		audio.loop = true;
 		audio.mute = true;
 		while (!(Microphone.GetPosition("") > 0)) {}
@@ -48,8 +48,7 @@ public class GetMicVolume : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		CalcLoudness();
-		float vol = GetAveragedVolume();
-		Debug.Log(vol);
+		Debug.Log(loudness);
 	}
 
 	// 現フレームの音量を計算する
