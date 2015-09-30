@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class VolumeMeter : MonoBehaviour {
+public class CalcVolume : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
