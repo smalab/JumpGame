@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
-public class Meter : MonoBehaviour {
+public class MeterController : MonoBehaviour {
+	//メーター感度(必要かは不明)
+	public float MeterFactor = 1;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
 	// Update is called once per frame
 	void Update () {
-	
+		float meterValue = System.Math.Min(1.0f, this.MeterFactor);
 	}
 }
