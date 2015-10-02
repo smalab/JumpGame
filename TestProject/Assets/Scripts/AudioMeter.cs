@@ -4,16 +4,16 @@ using UnityEngine.UI;
 
 public class AudioMeter : MonoBehaviour {
 	//操作するイメージ
-	public Image MeterImage;
+	static public Image MeterImage;
 
 	//メーターの値(0~1)
-	public float MeterValue {
-		set {
-			if(MeterImage.fillAmount < value) {
-				MeterImage.fillAmount = value;
-			}
-		}
-	}
+	// public float MeterValue {
+	// 	set {
+	// 		if(MeterImage.fillAmount < value) {
+	// 			MeterImage.fillAmount = value;
+	// 		}
+	// 	}
+	// }
 
 	void Awake() {
 		var child = transform.GetChild(0);
@@ -25,7 +25,7 @@ public class AudioMeter : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//メーターが自動で0に近づくようにする
-		var newValue = MeterImage.fillAmount - (Time.deltaTime * 2);
+		var newValue = MeterImage.fillAmount - (Time.deltaTime * 1);
 		MeterImage.fillAmount = System.Math.Max(0, (float)newValue);
 	}
 }

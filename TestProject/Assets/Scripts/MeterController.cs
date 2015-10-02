@@ -8,6 +8,6 @@ public class MeterController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		float meterValue = System.Math.Min(1.0f, this.MeterFactor);
+		AudioMeter.MeterImage.fillAmount = GetMicInput.loudness / 1;
 	}
 }

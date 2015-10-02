@@ -4,7 +4,7 @@ using System.Collections;
 // 空の Audio Source を作って置く
 [RequireComponent (typeof (AudioSource))]
 public class GetMicInput : MonoBehaviour {
-    float loudness;             //音量.
+    static public float loudness;             //音量.
     float lastLoudness;         //前フレームの音量.
     public float sensitivity = 100;     //感度.音量の最大値.
     public float lastLoudnessInfluence; //前フレームの影響度合い.
