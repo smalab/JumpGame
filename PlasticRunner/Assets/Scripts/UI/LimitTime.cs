@@ -33,7 +33,7 @@ public class LimitTime : MonoBehaviour {
 		yield return new WaitForSeconds(2.0f);
 
 		if (Input.GetMouseButtonDown(0)) {
-			Application.LoadLevel ("Title");
+			Application.LoadLevel ("TitleScene");
 		}
 	}
 
