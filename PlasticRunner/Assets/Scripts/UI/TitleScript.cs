@@ -14,9 +14,4 @@ public class TitleScript : MonoBehaviour {
 			Application.LoadLevel("GameScene");
 		}
 	}
-
-	void onGUI() {
-		GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 128, 32), "PlasticRunner");
-	}
-
 }
