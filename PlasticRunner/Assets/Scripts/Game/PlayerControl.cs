@@ -165,14 +165,14 @@ public class PlayerControl : MonoBehaviour {
 		} while(false);
 	}
 
-	public bool isPlayEnd() {	// ゲームの終了を判定するメソッド
-		bool ret = false;
-		switch(this.step) {
-			case STEP.MISS:	// MISS状態の場合
-				ret = true;	// ゲームオーバー(true)を返す
-				break;
-		}
-		return(ret);
-	}
+	// public bool isPlayEnd() {	// ゲームの終了を判定するメソッド
+	// 	bool ret = false;
+	// 	switch(this.step) {
+	// 		case STEP.MISS:	// MISS状態の場合
+	// 			ret = true;	// ゲームオーバー(true)を返す
+	// 			break;
+	// 	}
+	// 	return(ret);
+	// }
 
 }
