@@ -2,15 +2,13 @@
 using System.Collections;
 
 public class TitleScript : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
 	// Update is called once per frame
+	public void BackTitle () {
+		Application.LoadLevel("TitleScene");
+	}
+
 	void Update () {
-		if(Input.GetMouseButtonDown(0)) {
+		if (Input.GetMouseButton(0)) {
 			Application.LoadLevel("GameScene");
 		}
 	}
