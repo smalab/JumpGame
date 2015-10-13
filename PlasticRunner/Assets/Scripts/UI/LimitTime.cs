@@ -33,10 +33,7 @@ public class LimitTime : MonoBehaviour {
 		gameOverText.SetActive(true);
 		backTitlebtn.SetActive(true);
 		yield return new WaitForSeconds(2.0f);
-
-		if (Input.GetMouseButtonDown(0)) {
-			Application.LoadLevel ("TitleScene");
-		}
 	}
-
 }
+
+

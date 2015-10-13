@@ -10,6 +10,7 @@ public class PlayerControl : MonoBehaviour {
 	public static float JUMP_HEIGHT_MAX = 3.0f;	// ジャンプの高さ
 	public static float JUMP_KEY_RELEASE_REDUCE = 0.5f;	// ジャンプからの減速値
 	public static float NARAKU_HEIGHT = -5.0f;
+	public bool isPlaying = true;	// プレイ可能かを判断する
 
 	public enum STEP {	// Playerの各種状態を表すデータ型
 		NONE = -1,		// 状態情報なし
@@ -164,15 +165,5 @@ public class PlayerControl : MonoBehaviour {
 			this.is_landed = true;
 		} while(false);
 	}
-
-	// public bool isPlayEnd() {	// ゲームの終了を判定するメソッド
-	// 	bool ret = false;
-	// 	switch(this.step) {
-	// 		case STEP.MISS:	// MISS状態の場合
-	// 			ret = true;	// ゲームオーバー(true)を返す
-	// 			break;
-	// 	}
-	// 	return(ret);
-	// }
 
 }
