@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class TitleScript : MonoBehaviour {
-	// Update is called once per frame
 	public void BackTitle () {
 		Application.LoadLevel("TitleScene");
 	}
