@@ -131,6 +131,7 @@ public class PlayerControl : MonoBehaviour {
 			case STEP.MISS:
 				// 加速値(ACCELERATION)を引き算してPlayerの速度を遅くしていく
 				velocity.x -= PlayerControl.ACCELERATION * Time.deltaTime;
+				isPlaying = false;	// GameOverに遷移させるように
 				if(velocity.x < 0.0f) {	// Playerの速度が負の場合
 					velocity.x = 0.0f;
 				}

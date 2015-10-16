@@ -6,9 +6,7 @@ public class TitleScript : MonoBehaviour {
 		Application.LoadLevel("TitleScene");
 	}
 
-	void Update () {
-		if (Input.GetMouseButton(0)) {
-			Application.LoadLevel("GameScene");
-		}
+	public void StartGame () {
+		Application.LoadLevel("GameScene");
 	}
 }
