@@ -11,6 +11,7 @@ public class PlayerControl : MonoBehaviour {
 	public static float JUMP_KEY_RELEASE_REDUCE = 0.5f;	// ジャンプからの減速値
 	public static float NARAKU_HEIGHT = -5.0f;
 	public bool isPlaying = true;	// プレイ可能かを判断する
+	public GameObject p_Prefab;
 
 	public enum STEP {	// Playerの各種状態を表すデータ型
 		NONE = -1,		// 状態情報なし
@@ -131,11 +132,15 @@ public class PlayerControl : MonoBehaviour {
 			case STEP.MISS:
 				// 加速値(ACCELERATION)を引き算してPlayerの速度を遅くしていく
 				velocity.x -= PlayerControl.ACCELERATION * Time.deltaTime;
-				isPlaying = false;	// GameOverに遷移させるように
+				// isPlaying = false;	// GameOverに遷移させるように
 				if(velocity.x < 0.0f) {	// Playerの速度が負の場合
 					velocity.x = 0.0f;
 				}
+				GameObject.Destroy(this.gameObject);
+				Instantiate(p_Prefab, Vector3.up * 2, Quaternion.identity);
+				next_step = STEP.RUN;
 				break;
+			// case STEP.END:
 		}
 		// Rigidbodyの速度を上記で求めた速度で更新
 		// この行は状態にかかわらず毎回実行される
