@@ -136,8 +136,8 @@ public class PlayerControl : MonoBehaviour {
 				if(velocity.x < 0.0f) {	// Playerの速度が負の場合
 					velocity.x = 0.0f;
 				}
-				GameObject.Destroy(this.gameObject);
 				Instantiate(p_Prefab, Vector3.up * 2, Quaternion.identity);
+				// GameObject.Destroy(this.gameObject);
 				next_step = STEP.RUN;
 				break;
 			// case STEP.END:
