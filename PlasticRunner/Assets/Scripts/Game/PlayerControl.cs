@@ -10,6 +10,8 @@ public class PlayerControl : MonoBehaviour {
 	public static float JUMP_HEIGHT_MAX = 3.0f;	// ジャンプの高さ
 	public static float JUMP_KEY_RELEASE_REDUCE = 0.5f;	// ジャンプからの減速値
 	public static float NARAKU_HEIGHT = -5.0f;
+	public bool isPlaying = true;	// プレイ可能かを判断する
+	public GameObject p_Prefab;
 
 	public enum STEP {	// Playerの各種状態を表すデータ型
 		NONE = -1,		// 状態情報なし
@@ -130,10 +132,15 @@ public class PlayerControl : MonoBehaviour {
 			case STEP.MISS:
 				// 加速値(ACCELERATION)を引き算してPlayerの速度を遅くしていく
 				velocity.x -= PlayerControl.ACCELERATION * Time.deltaTime;
+				// isPlaying = false;	// GameOverに遷移させるように
 				if(velocity.x < 0.0f) {	// Playerの速度が負の場合
 					velocity.x = 0.0f;
 				}
+				Instantiate(p_Prefab, Vector3.up * 2, Quaternion.identity);
+				// GameObject.Destroy(this.gameObject);
+				next_step = STEP.RUN;
 				break;
+			// case STEP.END:
 		}
 		// Rigidbodyの速度を上記で求めた速度で更新
 		// この行は状態にかかわらず毎回実行される
@@ -163,16 +170,6 @@ public class PlayerControl : MonoBehaviour {
 			// sからeの間に何かがあり、JUMP直後でない場合のみ以下を実行する
 			this.is_landed = true;
 		} while(false);
-	}
-
-	public bool isPlayEnd() {	// ゲームの終了を判定するメソッド
-		bool ret = false;
-		switch(this.step) {
-			case STEP.MISS:	// MISS状態の場合
-				ret = true;	// ゲームオーバー(true)を返す
-				break;
-		}
-		return(ret);
 	}
 
 }
