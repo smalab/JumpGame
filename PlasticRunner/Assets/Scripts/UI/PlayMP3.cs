@@ -3,7 +3,8 @@ using System.Collections;
 
 public class PlayMP3 : MonoBehaviour {
 
-	public GameObject unity;
+	public GameObject player;
+	public GameObject Sign;
 	public float speed = 0.07f;
 	public AudioClip audioclip;
 	AudioSource audiosource;
@@ -12,7 +13,7 @@ public class PlayMP3 : MonoBehaviour {
 	void Start () {
 		audiosource = gameObject.GetComponent<AudioSource> ();
 		audiosource.clip = audioclip;
-		unity = GameObject.Find("Player");
+		player = GameObject.Find("Player");
 	}
 	
 	// Update is called once per frame
@@ -22,9 +23,10 @@ public class PlayMP3 : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col) {
-		if (col.gameObject.name == "Player") {
+		if (col.gameObject.name == "Text") {
 			audiosource.PlayOneShot (audioclip);
 			Debug.Log ("entertag");
+			GameObject.Destroy(Sign);
 			// gameObject.GetComponent<Hitbucket> ().enabled = false;
 		}
 	}

@@ -136,7 +136,8 @@ public class PlayerControl : MonoBehaviour {
 				if(velocity.x < 0.0f) {	// Playerの速度が負の場合
 					velocity.x = 0.0f;
 				}
-				Instantiate(p_Prefab, Vector3.up * 2, Quaternion.identity);
+				GameObject p_Clone = GameObject.Instantiate
+					(p_Prefab, Vector3.up * 2, Quaternion.identity) as GameObject;
 				// GameObject.Destroy(this.gameObject);
 				next_step = STEP.RUN;
 				break;
