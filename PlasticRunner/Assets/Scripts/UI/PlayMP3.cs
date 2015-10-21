@@ -23,9 +23,9 @@ public class PlayMP3 : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col) {
-		if (col.gameObject.name == "Text") {
+		if (col.gameObject.name == "Canvas Sign") {
 			audiosource.PlayOneShot (audioclip);
-			Debug.Log ("entertag");
+			// Debug.Log ("entertag");
 			GameObject.Destroy(Sign);
 			// gameObject.GetComponent<Hitbucket> ().enabled = false;
 		}

@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerCreator : MonoBehaviour {
-	public GameObject Ply;
+public class SignCreator : MonoBehaviour {
+	public GameObject signPrefab;
 
 	// Use this for initialization
 	void Start () {
-		GameObject p_start = GameObject.Instantiate(this.Ply) as GameObject;
+		GameObject s_start = GameObject.Instantiate(this.signPrefab) as GameObject;
 	}
 	
 	// Update is called once per frame
