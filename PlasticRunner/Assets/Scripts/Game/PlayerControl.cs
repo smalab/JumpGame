@@ -9,9 +9,8 @@ public class PlayerControl : MonoBehaviour {
 	public static float SPEED_MAX = 8.0f;	// 速度の最大値
 	public static float JUMP_HEIGHT_MAX = 3.0f;	// ジャンプの高さ
 	public static float JUMP_KEY_RELEASE_REDUCE = 0.5f;	// ジャンプからの減速値
-	public static float NARAKU_HEIGHT = -5.0f;
+	public static float NARAKU_HEIGHT = -5.0f;	// MISSの判定になる高さ
 	public bool isPlaying = true;	// プレイ可能かを判断する
-	public GameObject p_Prefab;
 
 	public enum STEP {	// Playerの各種状態を表すデータ型
 		NONE = -1,		// 状態情報なし
@@ -30,15 +29,16 @@ public class PlayerControl : MonoBehaviour {
 	private bool is_key_released = false;	// ボタンが離されているかの判定
 	private float click_timer = -1.0f;	// ボタンが押されてからの時間
 	private float CLICK_CRACE_TIME = 0.5f;	// ジャンプしたい意志を受け取る時間
-
+	private Rigidbody mRigidbody = null;
 	// Use this for initialization
 	void Start () {
-	this.next_step = STEP.RUN;	// ゲーム開始を走る状態に
+		this.next_step = STEP.RUN;	// ゲーム開始を走る状態に
+		mRigidbody = this.GetComponent<Rigidbody>();
 	}
 
 	// Update is called once per frame
 	void Update () {
-		Vector3 velocity = this.GetComponent<Rigidbody>().velocity;	// 速度を設定
+		Vector3 velocity = mRigidbody.velocity;	// 速度を設定
 		this.current_speed = this.level_control.getPlayerSpeed();
 		this.check_landed();	// 着地状態かどうかをチェック
 
@@ -136,16 +136,15 @@ public class PlayerControl : MonoBehaviour {
 				if(velocity.x < 0.0f) {	// Playerの速度が負の場合
 					velocity.x = 0.0f;
 				}
-				// GameObject p_Clone = GameObject.Instantiate
-				// 	(p_Prefab, Vector3.up * 2, Quaternion.identity) as GameObject;
-				// GameObject.Destroy(this.gameObject);
+				transform.position = new Vector3(transform.position.x, 2, transform.position.z);
+				mRigidbody.velocity = new Vector3(mRigidbody.velocity.x, 0, mRigidbody.velocity.z);
 				next_step = STEP.RUN;
 				break;
 			// case STEP.END:
 		}
 		// Rigidbodyの速度を上記で求めた速度で更新
 		// この行は状態にかかわらず毎回実行される
-		this.GetComponent<Rigidbody>().velocity = velocity;
+		mRigidbody.velocity = velocity;
 	}
 
 	private void check_landed() {
@@ -170,6 +169,7 @@ public class PlayerControl : MonoBehaviour {
 
 			// sからeの間に何かがあり、JUMP直後でない場合のみ以下を実行する
 			this.is_landed = true;
+			mRigidbody.velocity = new Vector3(mRigidbody.velocity.x, 0, mRigidbody.velocity.z);
 		} while(false);
 	}
 
