@@ -150,7 +150,6 @@ public class LevelControl : MonoBehaviour {
 			if(line == "") {	// 行が空の場合
 				continue;	// 以下の処理はせずにループの先頭にジャンプ
 			};
-			Debug.Log(line);
 			string[] words = line.Split();	// 行内のワードを配列に格納
 			int n = 0;
 

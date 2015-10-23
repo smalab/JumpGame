@@ -24,16 +24,19 @@ public class PlayerControl : MonoBehaviour {
 	public STEP next_step = STEP.NONE;	// Playerの次の状態
 
 	public float step_timer = 0.0f;	// 経過時間
-	private bool is_landed = false;	// 着地しているかの判定
+	//private bool is_landed = false;	// 着地しているかの判定
 	//private bool is_collided = false;	// 何かとぶつかっているかの判定
 	private bool is_key_released = false;	// ボタンが離されているかの判定
 	private float click_timer = -1.0f;	// ボタンが押されてからの時間
 	private float CLICK_CRACE_TIME = 0.5f;	// ジャンプしたい意志を受け取る時間
 	private Rigidbody mRigidbody = null;
+	public PlayerButtom mButtom = null;
+
 	// Use this for initialization
 	void Start () {
 		this.next_step = STEP.RUN;	// ゲーム開始を走る状態に
 		mRigidbody = this.GetComponent<Rigidbody>();
+		mButtom = this.GetComponentInChildren<PlayerButtom>();
 	}
 
 	// Update is called once per frame
@@ -68,14 +71,14 @@ public class PlayerControl : MonoBehaviour {
 				case STEP.RUN:	// 走行中の場合
 					// click_timerが0以上、CLICK_GRACE_TIME以下の場合
 					if(0.0f <= this.click_timer && this.click_timer <= CLICK_CRACE_TIME) {
-						if(this.is_landed) {	// 着地しているならば
+						if(this.mButtom.IsLanded == true) {	// 着地しているならば
 							this.click_timer = -1.0f;	// ボタンが押されていないことを表す-1.0fに
 							this.next_step = STEP.JUMP;	// ジャンプ状態に
 							}
 						}
 					break;
 				case STEP.JUMP:	// ジャンプ中の場合
-					if(this.is_landed) {
+					if(this.mButtom.IsLanded == false) {
 						// ジャンプ中で着地していたら、次の状態を走行中に変更
 						this.next_step = STEP.RUN;
 					}
@@ -136,11 +139,11 @@ public class PlayerControl : MonoBehaviour {
 				if(velocity.x < 0.0f) {	// Playerの速度が負の場合
 					velocity.x = 0.0f;
 				}
-				transform.position = new Vector3(transform.position.x, 2, transform.position.z);
+				transform.position = new Vector3(transform.position.x, 4, transform.position.z);
 				mRigidbody.velocity = new Vector3(mRigidbody.velocity.x, 0, mRigidbody.velocity.z);
 				next_step = STEP.RUN;
 				break;
-			// case STEP.END:
+			// case STEP.END:	// 時間切れになったときの処理
 		}
 		// Rigidbodyの速度を上記で求めた速度で更新
 		// この行は状態にかかわらず毎回実行される
@@ -148,14 +151,14 @@ public class PlayerControl : MonoBehaviour {
 	}
 
 	private void check_landed() {
-		this.is_landed = false;
+		// this.is_landed = false;
 
 		do {
-			Vector3 s = this.transform.position;	// Playerの現在位置
-			Vector3 e = s + Vector3.down * 1.0f;	// sから1.0fに移動した位置
+			// Vector3 s = this.transform.position;	// Playerの現在位置
+			// Vector3 e = s + Vector3.down * 1.0f;	// sから1.0fに移動した位置
 
-			RaycastHit hit;
-			if(! Physics.Linecast(s, e, out hit)) {	// sからeの間に何もない場合
+			// RaycastHit hit;
+			if(this.mButtom.IsLanded == false) {	// sからeの間に何もない場合
 				break;	// 何もせずdo-whileループを抜ける
 			}
 
@@ -168,7 +171,7 @@ public class PlayerControl : MonoBehaviour {
 			}
 
 			// sからeの間に何かがあり、JUMP直後でない場合のみ以下を実行する
-			this.is_landed = true;
+			// this.is_landed = true;
 			mRigidbody.velocity = new Vector3(mRigidbody.velocity.x, 0, mRigidbody.velocity.z);
 		} while(false);
 	}
