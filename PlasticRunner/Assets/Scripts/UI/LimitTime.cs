@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class LimitTime : MonoBehaviour {
-	private float m_time = 3.0f;
+	private float m_time = 300.0f;
 	public float remainTime {
 		get {return m_time;}
 	}

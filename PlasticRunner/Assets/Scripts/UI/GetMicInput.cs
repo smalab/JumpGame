@@ -11,6 +11,8 @@ public class GetMicInput : MonoBehaviour {
     public float sensitivity = 100.0f;     //感度.音量の最大値.
     public float lastLoudnessInfluence; //前フレームの影響度合い.
 
+    public float aveVoice {get { return m_aveVoice; } }
+
     void Start() 
     {
         // 空の Audio Sourceを取得
