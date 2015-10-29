@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ColledObject : MonoBehaviour {
+public class DesObject : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -9,8 +9,8 @@ public class ColledObject : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider col) {
-		if (col.gameObject.layer == LayerMask.NameToLayer("Sign")) {
-			GameObject.Destroy(col.gameObject);
+		if (gameObject.layer == LayerMask.NameToLayer("Sign")) {
+            GameObject.Destroy(col.gameObject);
 		}
 	}
 }

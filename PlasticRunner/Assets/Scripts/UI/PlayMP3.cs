@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class PlayMP3 : MonoBehaviour {
-	public float speed = 0.07f;
 	public AudioClip audioclip;
 	AudioSource audiosource;
 
@@ -17,14 +16,14 @@ public class PlayMP3 : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider col) {
-		// if (col.gameObject.name == "Canvas Sign") {
-			// audiosource.PlayOneShot (audioclip);
-			// GameObject.Destroy(Sign);
-		//}
-
-		if (col.gameObject.layer == LayerMask.NameToLayer("Sign")) {
+		if (col.gameObject.layer == LayerMask.NameToLayer("Event")) {
 			audiosource.PlayOneShot (audioclip);
-			GameObject.Destroy(col.gameObject);
+			//GameObject.Destroy(this.gameObject);
 		}
 	}
+
+    //public void Playmp3 ()
+    //{
+    //   audiosource.PlayOneShot(audioclip);
+    //}
 }
