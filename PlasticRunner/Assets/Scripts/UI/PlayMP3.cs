@@ -12,18 +12,10 @@ public class PlayMP3 : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	}
+	void Update () {}
 
-	void OnTriggerEnter(Collider col) {
-		if (col.gameObject.layer == LayerMask.NameToLayer("Event")) {
-			audiosource.PlayOneShot (audioclip);
-			//GameObject.Destroy(this.gameObject);
-		}
-	}
-
-    //public void Playmp3 ()
-    //{
-    //   audiosource.PlayOneShot(audioclip);
-    //}
+    public void Playmp3 ()
+    {
+       audiosource.PlayOneShot(audioclip);
+    }
 }

@@ -37,7 +37,7 @@ public class MapCreator : MonoBehaviour {
 		this.last_block.is_created = false;
 		this.block_creator = this.gameObject.GetComponent<BlockCreator>();
 
-		this.level_control = new LevelControl();
+        this.level_control = gameObject.AddComponent<LevelControl>();
 		this.level_control.initialize();
 		this.level_control.loadLevelData(this.level_data_text);
 		this.game_root = this.gameObject.GetComponent<GameRoot>();
