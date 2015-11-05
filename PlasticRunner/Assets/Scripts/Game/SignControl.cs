@@ -16,7 +16,7 @@ public class SignControl : MonoBehaviour {
         if (collider.gameObject.layer == LayerMask.NameToLayer("Event"))
         {
             mPlaymp3.SendMessage("Playmp3");
-            mScorecontrol.SendMessage("CallAddScore");
+            mScorecontrol.SendMessage("AddScore");
             Destroy(gameObject, 1.0f);
         }
     }

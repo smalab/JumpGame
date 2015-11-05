@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour
     
 	// Use this for initialization
 	void Start () {
-        GetComponent<Text>().text = mScore.ToString();
+        GetComponentInChildren<Text>().text = mScore.ToString();
 	}
 	
 	// Update is called once per frame
@@ -20,12 +20,12 @@ public class ScoreManager : MonoBehaviour
         StartCoroutine("AddScore");
     }
 
-    IEnumerator AddScore()
+    public IEnumerator AddScore()
     {
         for (int i = 0; i < 50; i++)
         {
             mScore += 2;
-            GetComponent<Text>().text = mScore.ToString();
+            GetComponentInChildren<Text>().text = mScore.ToString();
             yield return new WaitForSeconds(0.01f);
         }
     }
