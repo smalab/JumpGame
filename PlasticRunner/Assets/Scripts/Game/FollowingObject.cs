@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PositionControl : MonoBehaviour {
+public class FollowingObject : MonoBehaviour {
 	private GameObject player = null;
 	private Vector3 position_offset = Vector3.zero;	// Vector3(0, 0, 0);
 

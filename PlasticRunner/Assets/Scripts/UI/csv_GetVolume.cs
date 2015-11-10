@@ -6,7 +6,7 @@ using System.Text;
 
 public class csv_GetVolume : MonoBehaviour {
 
-	private float time = 0.0f;
+	private float mTime = 0.0f;
     GetMicInput AverageVoice = null;
 
 	// Use this for initialization
@@ -25,10 +25,10 @@ public class csv_GetVolume : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//0.2s gotoni data wo toru
-		time += Time.deltaTime;
-		if (time >= 0.1f) {
+		mTime += Time.deltaTime;
+		if (mTime >= 0.1f) {
 			logSave ( GetMicInput.loudness.ToString(), AverageVoice.aveVoice.ToString() );
-			time = 0.0f;
+			mTime = 0.0f;
 		}
 
 	}

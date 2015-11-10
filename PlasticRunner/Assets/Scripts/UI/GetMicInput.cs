@@ -35,7 +35,8 @@ public class GetMicInput : MonoBehaviour {
     //マイクの感度が良すぎる場合は, lastLoudnessInfluence を上げたりして調節しましょう.
     void CalcLoudness() {
         lastLoudness = loudness;
-        loudness = GetAveragedVolume() * sensitivity * ( 1 - lastLoudnessInfluence ) + lastLoudness * lastLoudnessInfluence;
+        loudness = GetAveragedVolume() * sensitivity * ( 1 - lastLoudnessInfluence )
+                   + lastLoudness * lastLoudnessInfluence;
     }
 
     //ユーザーの声の平均的な音量を計算する

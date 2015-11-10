@@ -3,10 +3,10 @@ using System.Collections;
 
 public class TitleScript : MonoBehaviour {
 	public void BackTitle () {
-		Application.LoadLevel("TitleScene");
+		Application.LoadLevel("Title");
 	}
 
 	public void StartGame () {
-		Application.LoadLevel("GameScene");
+		Application.LoadLevel("GameMain");
 	}
 }
