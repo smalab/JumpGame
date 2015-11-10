@@ -11,6 +11,6 @@ public class CloneSign : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+        mCloneobj = GameObject.Instantiate(mCloneobj) as GameObject;
 	}
 }
