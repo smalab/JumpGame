@@ -4,11 +4,13 @@ using System.Collections;
 public class SignControl : MonoBehaviour {
     private PlayMP3 mPlaymp3 = null;
     private ScoreManager mScorecontrol = null;
+    private SignManager mSignmanager = null;
 
     void Start()
     {
         mPlaymp3 = GameObject.Find("AudioManager").GetComponent<PlayMP3>();
         mScorecontrol = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
+        mSignmanager = GameObject.Find("SignManager").GetComponent<SignManager>();
     }
 
     void OnTriggerEnter (Collider collider)
@@ -18,6 +20,7 @@ public class SignControl : MonoBehaviour {
             mPlaymp3.SendMessage("Playmp3");
             mScorecontrol.SendMessage("AddScore");
             Destroy(gameObject, 0.5f);
+            mSignmanager.SendMessage("CreateSign");
         }
     }
 }
