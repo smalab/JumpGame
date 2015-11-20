@@ -17,7 +17,7 @@ public class SignControl : MonoBehaviour {
         {
             mPlaymp3.SendMessage("Playmp3");
             mScorecontrol.SendMessage("AddScore");
-            Destroy(gameObject, 1.0f);
+            Destroy(gameObject, 0.5f);
         }
     }
 }
