@@ -10,13 +10,12 @@ public class LoadTxtData : MonoBehaviour {
     // Use this for initialization
     void Start () {
         LoadText();
+        ShowText();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        ShowText();
-        Debug.Log(idx);
-        Debug.Log(lines[idx]);
+       
     }
 
     void LoadText ()

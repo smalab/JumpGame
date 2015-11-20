@@ -3,15 +3,14 @@ using System.Collections;
 
 public class SignManager : MonoBehaviour {
     public GameObject mSign = null;
-    private Vector3 mSignPosxAdd = new Vector3(5.0f, 0, 0);
-    private Vector3 mSignPos = new Vector3(0, 0, 0);
+    private Vector3 mSignPosxAdd = Vector3.right * 5;
+    private Vector3 mSignPos = Vector3.zero;
     //private Quaternion mSignQuaternion;
 
     // Use this for initialization
     void Start ()
     {
-        //mSignQuaternion = new Quaternion();
-        //mSignQuaternion = Quaternion.identity;
+        CreatSign(new Vector3(15.0f, 3.0f, 0.0f));
     }
 	
 	// Update is called once per frame
@@ -19,10 +18,17 @@ public class SignManager : MonoBehaviour {
         
     }
 
+    //OnTriggerEnterで呼び出し
     void CreateSign()
     { 
-        Instantiate(mSign, new Vector3(Random.Range(mSignPosxAdd.x + 50, mSignPosxAdd.x + 90),
+        Instantiate(mSign, new Vector3(Random.Range(mSignPos.x + 50.0f, mSignPos.x + 90.0f),
                     Random.Range(3.0f, 5.0f), 0.0f), mSign.transform.rotation);
         mSignPos += mSignPosxAdd;
+    }
+
+    //Startで呼び出し
+    void CreatSign(Vector3 aVector3)
+    {
+        Instantiate(mSign, aVector3, mSign.transform.rotation);
     }
 }
