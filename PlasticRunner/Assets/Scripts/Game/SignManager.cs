@@ -21,9 +21,9 @@ public class SignManager : MonoBehaviour {
     //OnTriggerEnterで呼び出し
     void CreateSign()
     { 
-        Instantiate(mSign, new Vector3(Random.Range(mSignPos.x + 50.0f, mSignPos.x + 90.0f),
+        Instantiate(mSign, new Vector3(Random.Range(mSignPos.x + 40.0f, mSignPos.x + 80.0f),
                     Random.Range(3.0f, 5.0f), 0.0f), mSign.transform.rotation);
-        mSignPos += mSignPosxAdd;
+        mSignPos += mSign.transform.localPosition;
     }
 
     //Startで呼び出し
