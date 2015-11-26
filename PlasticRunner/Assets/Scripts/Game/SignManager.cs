@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class SignManager : MonoBehaviour {
-    public GameObject mSign = null;
+    static public GameObject mSign = (GameObject)Resources.Load("Prefabs/CanvasSign");
     private Vector3 mSignPos = Vector3.zero;
     //private Quaternion mSignQuaternion;
 
