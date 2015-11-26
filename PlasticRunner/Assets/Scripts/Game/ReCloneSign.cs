@@ -2,22 +2,15 @@
 using System.Collections;
 
 public class ReCloneSign : MonoBehaviour {
-    private PlayMP3 mPlaymp3 = null;
-    private ScoreManager mScorecontrol = null;
     private SignManager mSignmanager = null;
-    //public GameObject mCloneSign;
 
     void Start()
     {
-        //mPlaymp3 = GameObject.Find("AudioManager").GetComponent<PlayMP3>();
-        //mScorecontrol = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
         mSignmanager = GameObject.Find("SignManager").GetComponent<SignManager>();
     }
 
     // Update is called once per frame
-    void Update () {
-	
-	}
+    void Update () {}
 
     //看板に当たれなかった場合
     void OnTriggerExit(Collider collider)
@@ -26,7 +19,7 @@ public class ReCloneSign : MonoBehaviour {
         {
             //mPlaymp3.SendMessage("Playmp3");
             //mScorecontrol.SendMessage("AddScore");
-            Destroy(SignManager.mSign, 0.5f);
+            Destroy(SignManager.tmpObject, 0.5f);
             mSignmanager.SendMessage("CreateSign");
         }
     }

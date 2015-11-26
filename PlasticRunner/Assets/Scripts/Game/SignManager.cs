@@ -4,6 +4,7 @@ using System.Collections;
 public class SignManager : MonoBehaviour {
     static public GameObject mSign = (GameObject)Resources.Load("Prefabs/CanvasSign");
     private Vector3 mSignPos = Vector3.zero;
+    static public GameObject tmpObject = null;
     //private Quaternion mSignQuaternion;
 
     // Use this for initialization
@@ -22,7 +23,7 @@ public class SignManager : MonoBehaviour {
     //(課題)Instantiateせずに看板の文字だけ消して、座標を変更してあげるように = MoveSign()
     void CreateSign()
     {
-        GameObject tmpObject = (GameObject) Instantiate(mSign, Vector3.zero, Quaternion.identity);
+        tmpObject = (GameObject) Instantiate(mSign, Vector3.zero, Quaternion.identity);
         tmpObject.transform.position = new Vector3(mSignPos.x + Random.Range(30.0f, 45.0f), 
                                                    Random.Range(2.0f, 4.0f), tmpObject.transform.position.z);
         mSignPos = tmpObject.transform.position;
@@ -39,7 +40,7 @@ public class SignManager : MonoBehaviour {
     //Startで呼び出し
     void CreatSign(Vector3 aVector3)
     {
-        Instantiate(mSign, aVector3, mSign.transform.rotation);
+        tmpObject = (GameObject) Instantiate(mSign, aVector3, mSign.transform.rotation);
         mSignPos = new Vector3(mSignPos.x + Random.Range(30.0f, 45.0f),
                                Random.Range(2.0f, 4.0f), mSign.transform.position.z);
     }
