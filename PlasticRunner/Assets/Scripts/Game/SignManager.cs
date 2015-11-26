@@ -3,7 +3,6 @@ using System.Collections;
 
 public class SignManager : MonoBehaviour {
     public GameObject mSign = null;
-    private Vector3 mSignPosxAdd = Vector3.right * 5;
     private Vector3 mSignPos = Vector3.zero;
     //private Quaternion mSignQuaternion;
 
@@ -11,6 +10,7 @@ public class SignManager : MonoBehaviour {
     void Start ()
     {
         CreatSign(new Vector3(15.0f, 3.0f, 0.0f));
+
     }
 	
 	// Update is called once per frame
@@ -19,16 +19,28 @@ public class SignManager : MonoBehaviour {
     }
 
     //OnTriggerEnterで呼び出し
+    //(課題)Instantiateせずに看板の文字だけ消して、座標を変更してあげるように = MoveSign()
     void CreateSign()
-    { 
-        Instantiate(mSign, new Vector3(Random.Range(mSignPos.x + 40.0f, mSignPos.x + 80.0f),
-                    Random.Range(3.0f, 5.0f), 0.0f), mSign.transform.rotation);
-        mSignPos += mSign.transform.localPosition;
+    {
+        GameObject tmpObject = (GameObject) Instantiate(mSign, Vector3.zero, Quaternion.identity);
+        tmpObject.transform.position = new Vector3(mSignPos.x + Random.Range(30.0f, 45.0f), 
+                                                   Random.Range(2.0f, 4.0f), tmpObject.transform.position.z);
+        mSignPos = tmpObject.transform.position;
     }
+
+    // void MoveSign()
+    // {
+    //     mSign.transform.Translate(new Vector3(mSignPos.x + Random.Range(30.0f, 45.0f),
+    //                               Random.Range(2.0f, 4.0f), mSign.transform.position.z));
+    //     mSignPos = mSign.transform.position;
+    //     Debug.Log(mSignPos);
+    // }
 
     //Startで呼び出し
     void CreatSign(Vector3 aVector3)
     {
         Instantiate(mSign, aVector3, mSign.transform.rotation);
+        mSignPos = new Vector3(mSignPos.x + Random.Range(30.0f, 45.0f),
+                               Random.Range(2.0f, 4.0f), mSign.transform.position.z);
     }
 }
