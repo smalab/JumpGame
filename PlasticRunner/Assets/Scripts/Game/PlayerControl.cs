@@ -71,7 +71,7 @@ public class PlayerControl : MonoBehaviour {
 				case STEP.RUN:	// 走行中の場合
 					// click_timerが0以上、CLICK_GRACE_TIME以下の場合
 					if(0.0f <= this.click_timer && this.click_timer <= CLICK_CRACE_TIME) {
-						if(this.mButtom.IsLanded == true) {	// 着地しているならば
+						if(this.mButtom.IsLanded == true && GetMicInput.loudness >= 2) {	// 着地しているならば
 							this.click_timer = -1.0f;	// ボタンが押されていないことを表す-1.0fに
 							this.next_step = STEP.JUMP;	// ジャンプ状態に
 							}
@@ -134,10 +134,10 @@ public class PlayerControl : MonoBehaviour {
 				break;
 			case STEP.MISS:
 				// 加速値(ACCELERATION)を引き算してPlayerの速度を遅くしていく
-				velocity.x -= PlayerControl.ACCELERATION * Time.deltaTime;
-				if(velocity.x < 0.0f) {	// Playerの速度が負の場合
-					velocity.x = 0.0f;
-				}
+				// velocity.x -= PlayerControl.ACCELERATION * Time.deltaTime;
+				// if(velocity.x < 0.0f) {	// Playerの速度が負の場合
+				// 	velocity.x = 0.0f;
+				// }
 				transform.position = new Vector3(transform.position.x, 4, transform.position.z);
 				mRigidbody.velocity = new Vector3(mRigidbody.velocity.x, 0, mRigidbody.velocity.z);
 				next_step = STEP.RUN;
