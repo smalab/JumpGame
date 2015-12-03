@@ -1,5 +1,8 @@
 using UnityEngine;
 using System.Collections;
+using System.IO;
+using System;
+using System.Text;
 
 public class PlayerControl : MonoBehaviour {
 	public float current_speed = 0.0f;	// 現在のスピード
@@ -31,6 +34,7 @@ public class PlayerControl : MonoBehaviour {
 	private float CLICK_CRACE_TIME = 0.5f;	// ジャンプしたい意志を受け取る時間
 	private Rigidbody mRigidbody = null;
 	private csv_GetVolume mCsvWriter = null;
+	private GetMicInput mGetMicInput = null;
 	public PlayerButtom mButtom = null;
 
 	// Use this for initialization
@@ -40,7 +44,8 @@ public class PlayerControl : MonoBehaviour {
 		mButtom = GetComponentInChildren<PlayerButtom>();
 		//mButtom = Resources.Load("Prefabs/Player/Buttom") as PlayerButtom;
 		mCsvWriter = GetComponent<csv_GetVolume>();
-		mCsvWriter.Start();
+		mGetMicInput = GetComponent<GetMicInput>();
+		//mCsvWriter.Start();
 	}
 
 	// Update is called once per frame
@@ -179,5 +184,4 @@ public class PlayerControl : MonoBehaviour {
 			mRigidbody.velocity = new Vector3(mRigidbody.velocity.x, 0, mRigidbody.velocity.z);
 		} while(false);
 	}
-
 }

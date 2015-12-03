@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 using System.IO;
+using System;
 using System.Text;
 
 public class csv_GetVolume : MonoBehaviour {
 
 	//private float mTime = 0.0f;
-    GetMicInput mAverageVoice = null;
+    public static GetMicInput mAverageVoice = null;
 
 	// Use this for initialization
 	public void Start () {
-        mAverageVoice = GetComponent<GetMicInput>();
+
 		if (File.Exists("Assets/log.csv")) {
 			// Debug.Log("fileatta");
 			FileStream f = new System.IO.FileStream("Assets/log.csv", FileMode.Append, FileAccess.Write);
@@ -33,12 +34,14 @@ public class csv_GetVolume : MonoBehaviour {
 	}
 
 	public void LogSave(){
-		FileStream mLogSave = new FileStream("Assets/log.csv", FileMode.Append, FileAccess.Write);
+		//mAverageVoice = GetComponent<GetMicInput>();
+		FileStream mLogSave = new System.IO.FileStream("Assets/log.csv", FileMode.Append, FileAccess.Write);
 		Encoding utf8Enc = Encoding.GetEncoding("UTF-8");
 		StreamWriter writer = new StreamWriter(mLogSave, utf8Enc);
 		writer.Write(GetMicInput.loudness.ToString() + ",");
-        writer.Write(mAverageVoice.aveVoice.ToString() + ",");
+        writer.Write(GetMicInput.m_aveVoice.ToString() + ",");
         writer.Write(" " + ",");
+        writer.WriteLine("");
 		writer.Close();
 	}
 }

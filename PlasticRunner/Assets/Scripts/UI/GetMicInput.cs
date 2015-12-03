@@ -5,13 +5,13 @@ using System.Collections;
 [RequireComponent (typeof (AudioSource))]
 public class GetMicInput : MonoBehaviour {
     float lastLoudness;         //前フレームの音量.
-    float m_aveVoice;       //平均的な声の音量
+    public static float m_aveVoice;       //平均的な声の音量
     public float second = 300.0f;
     static public float loudness;             //音量.
     public float sensitivity = 100.0f;     //感度.音量の最大値.
     public float lastLoudnessInfluence; //前フレームの影響度合い.
 
-    public float aveVoice {get { return m_aveVoice; } }
+    //public float AveVoice {get { return m_aveVoice; } }
 
     void Start() 
     {
