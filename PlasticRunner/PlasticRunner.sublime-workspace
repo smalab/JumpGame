@@ -1,0 +1,951 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"cs",
+				"csv_GetVolume"
+			],
+			[
+				"m",
+				"mCsvWriter"
+			],
+			[
+				"R",
+				"RogueLike2D"
+			],
+			[
+				"msig",
+				"mSign	(SignManager.cs)"
+			],
+			[
+				"Sign",
+				"SignManager"
+			],
+			[
+				"Ra",
+				"Range	from, count"
+			],
+			[
+				"ran",
+				"randomPosition"
+			],
+			[
+				"rand",
+				"randomIndex"
+			],
+			[
+				"Vect",
+				"Vector3"
+			],
+			[
+				"gir",
+				"gridPositions"
+			],
+			[
+				"De",
+				"Debug	(PlayerButtom.cs)"
+			],
+			[
+				"v",
+				"velocity"
+			],
+			[
+				"pr",
+				"private	(PlayerControl.cs)"
+			],
+			[
+				"Game",
+				"GameObject"
+			],
+			[
+				"lo",
+				"loudness	(GetMicInput.cs)"
+			],
+			[
+				"is",
+				"isPlaying"
+			],
+			[
+				"Ap",
+				"Application"
+			],
+			[
+				"Meter",
+				"MeterImage	(AudioMeter.cs)"
+			],
+			[
+				"GetC",
+				"GetComponent	type"
+			],
+			[
+				"Get",
+				"GetComponent	type"
+			],
+			[
+				"la",
+				"lastLoudnessInfluence"
+			],
+			[
+				"M",
+				"Microphone"
+			],
+			[
+				"Mi",
+				"Microphone	(AllocateMicInput.cs)"
+			],
+			[
+				"Ve",
+				"Vector3	x, y, z"
+			],
+			[
+				"S",
+				"Start"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "Assets/Scripts/UI/csv_GetVolume.cs",
+			"settings":
+			{
+				"buffer_size": 1322,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Game/PlayerControl.cs",
+			"settings":
+			{
+				"buffer_size": 5285,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "PlasticRunner.sublime-project",
+			"settings":
+			{
+				"buffer_size": 277,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/cho-c_000/AppData/Roaming/Sublime Text 3/Packages/User/OmniSharpSublime.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 163,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "{\n  \"PathReplacements\": [\n\n  ],\n\n  /* Example cygwin path replacements\n\n  \"PathReplacements\":[\n    {\n      \"From\":\"/cygdrive/c/\",\n      \"To\":\"c:\\\\\"\n    },\n    {\n      \"From\":\"/\",\n      \"To\":\"\\\\\"\n    }\n  ],*/\n\n  /* Native Emacs on Windows path replacements\n\n  \"PathReplacements\": [\n      {\n          \"From\":\"/\",\n          \"To\":\"\\\\\"\n      }\n  ],*/\n\n  \"IgnoredCodeIssues\": [\n    \"^Keyword 'private' is redundant. This is the default modifier.$\",\n    \".* should not separate words with an underscore.*\",\n    \"^Redundant argument name specification$\",\n    \"^Convert to '.*' expre.\",\n    \"^Use 'var' keyword$\",\n    \"^Name should have prefix.\",\n    \"^Redundant ToString.\",\n    \"^Initializing field by default value is redundant$\",\n    \"^Parameter can be IComparable$\",\n    \"^Convert to constant.*\",\n    \"^Variable could be moved to a nested scope$\",\n    \"^Method never reaches its end or a 'return' statement.$\",\n    \".* should start with an upper case letter. \\\\(Rule 'Enum Members'\\\\)$\"\n  ],\n\n  \"TestCommands\": {\n    \"All\": \"xunit.console.exe {{AssemblyPath}}\",\n    \"Fixture\": \"xunit.console.exe {{AssemblyPath}} -class {{TypeName}}\",\n    \"Single\": \"xunit.console.exe {{AssemblyPath}} -method {{TypeName}}.{{MethodName}}\"\n  },\n\n  \"TextEditorOptions\": {\n    \"tabsToSpaces\": true,\n    \"tabSize\": 4,\n    \"indentSize\": 4,\n    \"continuationIndent\": 4,\n    \"labelIndent\": 0,\n    /* \"eolMarker\": \"\\r\\n\", */\n    \"indentBlankLines\": false,\n    \"wrapLineLength\": 80\n  },\n\n  /*\n    Available names:\n    * Custom\n    * KRStyle\n    * Allman\n    * Empty\n    * GNU\n    * Mono\n    * SharpDevelop\n    * Whitesmiths\n   */\n  \"CSharpFormattingOptionsName\" : \"Custom\",\n\n  \"CSharpFormattingOptions\": {\n    \"alignElseInIfStatements\": false,\n    \"alignEmbeddedStatements\": true,\n    \"alignToFirstIndexerArgument\": false,\n    \"alignToFirstIndexerDeclarationParameter\": false,\n    \"alignToFirstMethodCallArgument\": false,\n    \"alignToFirstMethodDeclarationParameter\": false,\n    \"alignToMemberReferenceDot\": false,\n    \"allowEventAddBlockInline\": true,\n    \"allowEventRemoveBlockInline\": true,\n    \"allowIfBlockInline\": false,\n    \"allowOneLinedArrayInitialziers\": true,\n    \"anonymousMethodBraceStyle\": 3,\n    \"arrayInitializerBraceStyle\": 3,\n    \"arrayInitializerWrapping\": 0,\n    \"autoPropertyFormatting\": 0,\n    \"catchNewLinePlacement\": 1,\n    \"chainedMethodCallWrapping\": 0,\n    \"classBraceStyle\": 3,\n    \"constructorBraceStyle\": 3,\n    \"destructorBraceStyle\": 3,\n    \"elseIfNewLinePlacement\": 2,\n    \"elseNewLinePlacement\": 1,\n    \"embeddedStatementPlacement\": 1,\n    \"emptyLineFormatting\": 2,\n    \"enumBraceStyle\": 3,\n    \"eventAddBraceStyle\": 3,\n    \"eventBraceStyle\": 3,\n    \"eventRemoveBraceStyle\": 3,\n    \"finallyNewLinePlacement\": 1,\n    \"indentBlocks\": true,\n    \"indentBlocksInsideExpressions\": true,\n    \"indentBreakStatements\": true,\n    \"indentCaseBody\": true,\n    \"indentClassBody\": true,\n    \"indentEnumBody\": true,\n    \"indentEventBody\": true,\n    \"indentInterfaceBody\": true,\n    \"indentMethodBody\": true,\n    \"indentNamespaceBody\": true,\n    \"indentPreprocessorDirectives\": true,\n    \"indentPropertyBody\": true,\n    \"indentStructBody\": true,\n    \"indentSwitchBody\": true,\n    \"indexerArgumentWrapping\": 0,\n    \"indexerClosingBracketOnNewLine\": 0,\n    \"indexerDeclarationClosingBracketOnNewLine\": 0,\n    \"indexerDeclarationParameterWrapping\": 0,\n    \"interfaceBraceStyle\": 3,\n    \"keepCommentsAtFirstColumn\": true,\n    \"methodBraceStyle\": 3,\n    \"methodCallArgumentWrapping\": 0,\n    \"methodCallClosingParenthesesOnNewLine\": 0,\n    \"methodDeclarationClosingParenthesesOnNewLine\": 0,\n    \"methodDeclarationParameterWrapping\": 0,\n    \"minimumBlankLinesAfterUsings\": 1,\n    \"minimumBlankLinesAroundRegion\": 1,\n    \"minimumBlankLinesBeforeFirstDeclaration\": 0,\n    \"minimumBlankLinesBeforeUsings\": 0,\n    \"minimumBlankLinesBetweenEventFields\": 0,\n    \"minimumBlankLinesBetweenFields\": 0,\n    \"minimumBlankLinesBetweenMembers\": 0,\n    \"minimumBlankLinesBetweenTypes\": 1,\n    \"minimumBlankLinesInsideRegion\": 1,\n    \"namespaceBraceStyle\": 3,\n    \"newLineAferIndexerDeclarationOpenBracket\": 0,\n    \"newLineAferIndexerOpenBracket\": 0,\n    \"newLineAferMethodCallOpenParentheses\": 0,\n    \"newLineAferMethodDeclarationOpenParentheses\": 0,\n    \"newLineAfterConstructorInitializerColon\": 2,\n    \"newLineBeforeConstructorInitializerColon\": 1,\n    \"newLineBeforeNewQueryClause\": 1,\n    \"propertyBraceStyle\": 3,\n    \"propertyGetBraceStyle\": 3,\n    \"propertySetBraceStyle\": 3,\n    \"removeEndOfLineWhiteSpace\": true,\n    \"simpleGetBlockFormatting\": 0,\n    \"simplePropertyFormatting\": 0,\n    \"simpleSetBlockFormatting\": 0,\n    \"spaceAfterBracketComma\": true,\n    \"spaceAfterConditionalOperatorCondition\": true,\n    \"spaceAfterConditionalOperatorSeparator\": true,\n    \"spaceAfterConstructorDeclarationParameterComma\": true,\n    \"spaceAfterDelegateDeclarationParameterComma\": true,\n    \"spaceAfterFieldDeclarationComma\": true,\n    \"spaceAfterForSemicolon\": true,\n    \"spaceAfterIndexerDeclarationParameterComma\": true,\n    \"spaceAfterLocalVariableDeclarationComma\": true,\n    \"spaceAfterMethodCallParameterComma\": true,\n    \"spaceAfterMethodDeclarationParameterComma\": true,\n    \"spaceAfterNewParameterComma\": true,\n    \"spaceAfterTypecast\": false,\n    \"spaceAfterUnsafeAddressOfOperator\": false,\n    \"spaceAfterUnsafeAsteriskOfOperator\": false,\n    \"spaceAroundAdditiveOperator\": true,\n    \"spaceAroundAssignment\": true,\n    \"spaceAroundBitwiseOperator\": true,\n    \"spaceAroundEqualityOperator\": true,\n    \"spaceAroundLogicalOperator\": true,\n    \"spaceAroundMultiplicativeOperator\": true,\n    \"spaceAroundNullCoalescingOperator\": true,\n    \"spaceAroundRelationalOperator\": true,\n    \"spaceAroundShiftOperator\": true,\n    \"spaceAroundUnsafeArrowOperator\": false,\n    \"spaceBeforeArrayDeclarationBrackets\": false,\n    \"spaceBeforeBracketComma\": false,\n    \"spaceBeforeCatchParentheses\": true,\n    \"spaceBeforeConditionalOperatorCondition\": true,\n    \"spaceBeforeConditionalOperatorSeparator\": true,\n    \"spaceBeforeConstructorDeclarationParameterComma\": false,\n    \"spaceBeforeConstructorDeclarationParentheses\": false,\n    \"spaceBeforeDelegateDeclarationParameterComma\": false,\n    \"spaceBeforeDelegateDeclarationParentheses\": false,\n    \"spaceBeforeFieldDeclarationComma\": false,\n    \"spaceBeforeForParentheses\": true,\n    \"spaceBeforeForSemicolon\": false,\n    \"spaceBeforeForeachParentheses\": true,\n    \"spaceBeforeIfParentheses\": true,\n    \"spaceBeforeIndexerDeclarationBracket\": false,\n    \"spaceBeforeIndexerDeclarationParameterComma\": false,\n    \"spaceBeforeLocalVariableDeclarationComma\": false,\n    \"spaceBeforeLockParentheses\": true,\n    \"spaceBeforeMethodCallParameterComma\": false,\n    \"spaceBeforeMethodCallParentheses\": false,\n    \"spaceBeforeMethodDeclarationParameterComma\": false,\n    \"spaceBeforeMethodDeclarationParentheses\": false,\n    \"spaceBeforeNewParameterComma\": false,\n    \"spaceBeforeNewParentheses\": false,\n    \"spaceBeforeSemicolon\": false,\n    \"spaceBeforeSizeOfParentheses\": false,\n    \"spaceBeforeSwitchParentheses\": true,\n    \"spaceBeforeTypeOfParentheses\": false,\n    \"spaceBeforeUsingParentheses\": true,\n    \"spaceBeforeWhileParentheses\": true,\n    \"spaceBetweenEmptyConstructorDeclarationParentheses\": false,\n    \"spaceBetweenEmptyDelegateDeclarationParentheses\": false,\n    \"spaceBetweenEmptyMethodCallParentheses\": false,\n    \"spaceBetweenEmptyMethodDeclarationParentheses\": false,\n    \"spaceInNamedArgumentAfterDoubleColon\": true,\n    \"spaceWithinConstructorDeclarationParentheses\": false,\n    \"spaceWithinDelegateDeclarationParentheses\": false,\n    \"spaceWithinIndexerDeclarationBracket\": false,\n    \"spaceWithinMethodCallParentheses\": false,\n    \"spaceWithinMethodDeclarationParentheses\": false,\n    \"spacesBeforeBrackets\": false,\n    \"spacesBetweenEmptyNewParentheses\": false,\n    \"spacesWithinBrackets\": false,\n    \"spacesWithinCastParentheses\": false,\n    \"spacesWithinCatchParentheses\": false,\n    \"spacesWithinCheckedExpressionParantheses\": false,\n    \"spacesWithinForParentheses\": false,\n    \"spacesWithinForeachParentheses\": false,\n    \"spacesWithinIfParentheses\": false,\n    \"spacesWithinLockParentheses\": false,\n    \"spacesWithinNewParentheses\": false,\n    \"spacesWithinParentheses\": false,\n    \"spacesWithinSizeOfParentheses\": false,\n    \"spacesWithinSwitchParentheses\": false,\n    \"spacesWithinTypeOfParentheses\": false,\n    \"spacesWithinUsingParentheses\": false,\n    \"spacesWithinWhileParentheses\": false,\n    \"statementBraceStyle\": 3,\n    \"structBraceStyle\": 3,\n    \"usingPlacement\": 0,\n    \"whileNewLinePlacement\": 0\n  }\n}\n",
+			"file": "/C/Users/cho-c_000/AppData/Roaming/Sublime Text 3/Packages/OmniSharp/PrebuiltOmniSharpServer/config.json",
+			"file_size": 8548,
+			"file_write_time": 130935969676667198,
+			"settings":
+			{
+				"buffer_size": 8545,
+				"line_ending": "Unix",
+				"scratch": true
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 354.0,
+		"last_filter": "in",
+		"selected_items":
+		[
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 582.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '5b468e895e861582c8ac080daaae7722' + 'a0787a887fb19723f006ed5b020ffdf6'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets"
+	],
+	"file_history":
+	[
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/Scripts/UI/FollowingObject.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/Scripts/Game/MapCreator.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/Scripts/Game/PlayerControl.cs",
+		"/C/Users/cho-c_000/Desktop/sample_data/MasterProject/PlasticRunner/Assets/Scripts/Control/PlayerControl.cs",
+		"/C/Users/cho-c_000/AppData/Roaming/Sublime Text 3/Packages/OmniSharp/PrebuiltOmniSharpServer/config.json",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/Scripts/Game/SignManager.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/Rougelike/Roguelike2D/Assets/Scripts/BoardManager.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/tmpJumpGame/PlasticRunner/Assets/Scripts/UI/FollowingObject.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/tmpJumpGame/PlasticRunner/Assets/Scripts/Game/SignManager.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/Rougelike/Roguelike2D/Roguelike2D.sublime-project",
+		"/C/Users/cho-c_000/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/cho-c_000/AppData/Roaming/Sublime Text 3/Packages/User/OmniSharpSublime.sublime-settings",
+		"/C/Users/cho-c_000/AppData/Roaming/Sublime Text 3/Packages/OmniSharp/OmniSharpSublime.sublime-settings",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/Scripts/Game/FollowingObject.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/Scripts/Game/LightControl.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/Scripts/Game/SignControl.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/RemoveTest.cs",
+		"/C/Users/cho-c_000/Desktop/卒研制作タスク.txt",
+		"/C/Users/cho-c_000/Desktop/エディターの作成",
+		"/C/Users/cho-c_000/Desktop/Instantiateしたオブジェクトの座標取得.txt",
+		"/C/Users/cho-c_000/Documents/GitHub/ForUltraPlayers-GRV-/Dragon'sDogmaOnline/Assets/Scripts/Editor.cpp",
+		"/C/Users/cho-c_000/Documents/GitHub/QuizCoaster/QC_umekita_alphabet_2/Assets/Scripts/TextureManager.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/QuizCoaster/QC_umekita_alphabet_2/Assets/Scripts/TextRender.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/Alphabet.txt",
+		"/C/Users/cho-c_000/Documents/GitHub/QuizCoaster/QC_umekita_alphabet_2/Assets/Scripts/ImageController.cs",
+		"/C/Users/cho-c_000/Downloads/Hitbucket.cs",
+		"/C/Users/cho-c_000/Desktop/BMEmu2005/resource.h",
+		"/C/Users/cho-c_000/Desktop/BMEmu2005/CGame.h",
+		"/C/Users/cho-c_000/Desktop/BMEmu2005/ソースコードについて.txt",
+		"/C/Program Files (x86)/osu!/Songs/48826 Rita - reach for the runway/Rita - reach for the runway (S o r d a) [Blue Sky].osu",
+		"/C/Users/cho-c_000/Downloads/gyro_GetPosture.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/Scripts/Game/LevelControl.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/Scripts/Game/PlayerButtom.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/Scripts/UI/LimitTime.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/tmpJumpGame/PlasticRunner/Assets/Scripts/Game/PlayerControl.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/tmpJumpGame/PlasticRunner/Assets/Scripts/PlayerControl.cs",
+		"/C/Users/cho-c_000/Desktop/sample_data/StudyProject/07_PlasticRunner_levelDesign/Assets/PlayerControl.cs",
+		"/C/Users/cho-c_000/Desktop/sample_data/StudyProject/07_PlasticRunner_levelDesign/Assets/MapCreator.cs",
+		"/C/Users/cho-c_000/Desktop/sample_data/StudyProject/07_PlasticRunner_levelDesign/Assets/BlockControl.cs",
+		"/C/Users/cho-c_000/Desktop/sample_data/StudyProject/07_PlasticRunner_levelDesign/Assets/BlockCreator.cs",
+		"/C/Users/cho-c_000/Desktop/sample_data/StudyProject/07_PlasticRunner_levelDesign/Assets/CameraControl.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/JumpGame追加案.txt",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/Scripts/UI/PlayMP3.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/Scripts/Game/BlockControl.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/Scripts/Game/CameraControl.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/Scripts/Game/BlockCreator.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/Scripts/Game/PlayerCreator.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/Scripts/Game/SignCreator.cs",
+		"/C/Users/cho-c_000/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/JumpGame追加案",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/Scripts/csv_GetVolume.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/level_data.txt",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/Scripts/UI/MeterController.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/Scripts/UI/GetMicInput.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/QuizCoaster/QC2/Assets/jayro.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/log.csv",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/Scripts/Game/GameRoot.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/Scripts/UI/TitleScript.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/Scripts/Game/TitleScript.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/TestProject/Assets/Scripts/MeterController.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/TestProject/Assets/Scripts/AudioMeter.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/TestProject/Assets/Scripts/GetMicInput.cs",
+		"/C/Unity/MeterTest/Assets/AudioMeterControl.cs",
+		"/C/Unity/MeterTest/Assets/AudioMeterBar.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/TestProject/Assets/Scripts/CalcVolume.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/TestProject/Assets/Scripts/GetMicVolume.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/TestProject/Assets/Scripts/VolumeMeter.cs",
+		"/C/syntaxhighlighter/test.html",
+		"/C/syntaxhighlighter_3.0.83/scripts/shBrushCSharp.js",
+		"/C/Users/cho-c_000/Desktop/syntaxhighlighter_3.0.83/scripts/shBrushCSharp.js",
+		"/C/Users/cho-c_000/Desktop/syntaxhighlighter_3.0.83/index.html",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/TestProject/Assets/Scripts/MicInput.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/TestProject/Assets/Scripts/LimitTime.cs",
+		"/C/Users/cho-c_000/Desktop/syntaxhighlighter_3.0.83/tests/syntaxhighlighter_tests.html",
+		"/C/Users/cho-c_000/Desktop/syntaxhighlighter_3.0.83/tests/brushes_tests.html",
+		"/C/Users/cho-c_000/AppData/Roaming/Sublime Text 3/Packages/User/ConvertToUTF8.sublime-settings",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/LevelMeterTest/Assets/Scripts/GetMicVolume.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/LevelMeterTest/Assets/Scripts/GetAudioClipData.cs",
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/LevelMeterTest/Assets/Scripts/AllocateMicInput.cs",
+		"/C/Users/cho-c_000/AppData/Roaming/Sublime Text 3/Packages/User/Base File.sublime-settings",
+		"/C/Users/cho-c_000/Downloads/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 70.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"NUM",
+			"is",
+			"GetComponent<AudioSource>()"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "Assets/Scripts/UI/csv_GetVolume.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1322,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								888,
+								888
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"oops":
+							{
+								"109,122": "'csv_GetVolume' should start with an upper case letter. (Rule 'Types')",
+								"1096,1108": "Use 'var' keyword",
+								"1175,1183": "Redundant ToString() call",
+								"1238,1246": "Redundant ToString() call",
+								"157,162": "Convert to constant",
+								"165,166": "Initializing field by default value is redundant",
+								"19,24": "Using directive is not used by code and can be removed safely.",
+								"203,207": "Initializing field by default value is redundant",
+								"402,408": "Qualifier is redundant",
+								"533,545": "Use 'var' keyword",
+								"62,67": "Using directive is not used by code and can be removed safely.",
+								"908,915": "'logSave' should start with an upper case letter. (Rule 'Methods')",
+								"923,933": "Parameter 'PlayVolume' is never used",
+								"942,953": "Parameter 'VoiceVolume' is never used",
+								"958,968": "Use 'var' keyword"
+							},
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 216.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Assets/Scripts/Game/PlayerControl.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5285,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								111,
+								111
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"oops":
+							{
+								"1007,1012": "Initializing field by default value is redundant",
+								"105,118": "Name should have prefix '_'. (Rule 'Fields').",
+								"1100,1116": "Convert to constant",
+								"1177,1181": "Initializing field by default value is redundant",
+								"121,122": "Initializing field by default value is redundant",
+								"1219,1223": "Initializing field by default value is redundant",
+								"1246,1253": "Name should have prefix '_'. (Rule 'Fields').",
+								"1256,1260": "Initializing field by default value is redundant",
+								"1314,1318": "'this.' is redundant and can be removed safely.",
+								"1371,1375": "'this.' is redundant and can be removed safely.",
+								"1415,1419": "'this.' is redundant and can be removed safely.",
+								"159,172": "Name should have prefix '_'. (Rule 'Fields').",
+								"1617,1621": "'this.' is redundant and can be removed safely.",
+								"1638,1642": "'this.' is redundant and can be removed safely.",
+								"1677,1681": "'this.' is redundant and can be removed safely.",
+								"1726,1730": "'this.' is redundant and can be removed safely.",
+								"175,179": "Initializing field by default value is redundant",
+								"1808,1812": "'this.' is redundant and can be removed safely.",
+								"1858,1862": "'this.' is redundant and can be removed safely.",
+								"1921,1925": "'this.' is redundant and can be removed safely.",
+								"2021,2025": "'this.' is redundant and can be removed safely.",
+								"2076,2080": "'this.' is redundant and can be removed safely.",
+								"2119,2123": "'this.' is redundant and can be removed safely.",
+								"221,233": "'ACCELERATION' should start with a lower case letter. (Rule 'Fields')",
+								"2211,2215": "'this.' is redundant and can be removed safely.",
+								"2252,2256": "'this.' is redundant and can be removed safely.",
+								"2375,2379": "'this.' is redundant and can be removed safely.",
+								"2395,2399": "'this.' is redundant and can be removed safely.",
+								"2444,2448": "'this.' is redundant and can be removed safely.",
+								"2466,2467": "Comparison with 'true' is redundant",
+								"2530,2534": "'this.' is redundant and can be removed safely.",
+								"2589,2593": "'this.' is redundant and can be removed safely.",
+								"2697,2701": "'this.' is redundant and can be removed safely.",
+								"271,280": "'SPEED_MIN' should start with a lower case letter. (Rule 'Fields')",
+								"2719,2720": "Comparison with 'false' is redundant",
+								"2772,2776": "'this.' is redundant and can be removed safely.",
+								"2857,2861": "'this.' is redundant and can be removed safely.",
+								"2891,2895": "'this.' is redundant and can be removed safely.",
+								"2903,2907": "'this.' is redundant and can be removed safely.",
+								"2939,2943": "'this.' is redundant and can be removed safely.",
+								"2993,2997": "'this.' is redundant and can be removed safely.",
+								"3186,3190": "'this.' is redundant and can be removed safely.",
+								"320,329": "'SPEED_MAX' should start with a lower case letter. (Rule 'Fields')",
+								"3236,3240": "'this.' is redundant and can be removed safely.",
+								"3319,3323": "'this.' is redundant and can be removed safely.",
+								"3502,3506": "'this.' is redundant and can be removed safely.",
+								"3561,3565": "'this.' is redundant and can be removed safely.",
+								"369,384": "'JUMP_HEIGHT_MAX' should start with a lower case letter. (Rule 'Fields')",
+								"3784,3788": "'this.' is redundant and can be removed safely.",
+								"4007,4011": "'this.' is redundant and can be removed safely.",
+								"425,448": "'JUMP_KEY_RELEASE_REDUCE' should start with a lower case letter. (Rule 'Fields')",
+								"4845,4849": "'this.' is redundant and can be removed safely.",
+								"4867,4868": "Comparison with 'false' is redundant",
+								"492,505": "'NARAKU_HEIGHT' should start with a lower case letter. (Rule 'Fields')",
+								"4967,4971": "'this.' is redundant and can be removed safely.",
+								"5038,5042": "'this.' is redundant and can be removed safely.",
+								"544,553": "Name should have prefix '_'. (Rule 'Fields').",
+								"744,748": "Name should have prefix '_'. (Rule 'Fields').",
+								"791,800": "Name should have prefix '_'. (Rule 'Fields').",
+								"844,854": "Name should have prefix '_'. (Rule 'Fields').",
+								"857,858": "Initializing field by default value is redundant"
+							},
+							"origin_encoding": "UTF-8",
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "PlasticRunner.sublime-project",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 277,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								275,
+								275
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_complete": true,
+							"bh_regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content"
+							],
+							"origin_encoding": "ASCII",
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/C/Users/cho-c_000/AppData/Roaming/Sublime Text 3/Packages/User/OmniSharpSublime.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 163,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content"
+							],
+							"origin_encoding": "ASCII",
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/C/Users/cho-c_000/AppData/Roaming/Sublime Text 3/Packages/OmniSharp/PrebuiltOmniSharpServer/config.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8545,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								981,
+								981
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_complete": true,
+							"bh_regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"in_converting": true,
+							"origin_encoding": "UTF-8-SIG",
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 216.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 138.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 48.0
+	},
+	"output.variable_get":
+	{
+		"height": 48.0
+	},
+	"pinned_build_system": "",
+	"project": "PlasticRunner.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
