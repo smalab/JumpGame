@@ -19,7 +19,7 @@ public class GetMicInput : MonoBehaviour {
         var audio = GetComponent<AudioSource>();
         // Audio Source の Audio Clip をマイク入力に設定
         // 引数は、デバイス名（null ならデフォルト）、ループ、何秒取るか、サンプリング周波数
-        audio.clip = Microphone.Start(null, false, 300, 44100);
+        audio.clip = Microphone.Start("Microphone", false, 300, 44100);
         // マイクが Ready になるまで待機（一瞬）
         while (Microphone.GetPosition(null) <= 0) {}
         // 再生開始（録った先から再生、スピーカーから出力するとハウリングします）

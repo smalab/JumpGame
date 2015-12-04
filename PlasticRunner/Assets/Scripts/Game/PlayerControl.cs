@@ -33,19 +33,11 @@ public class PlayerControl : MonoBehaviour {
 	private float click_timer = -1.0f;	// ボタンが押されてからの時間
 	private float CLICK_CRACE_TIME = 0.5f;	// ジャンプしたい意志を受け取る時間
 	private Rigidbody mRigidbody = null;
-	private csv_GetVolume mCsvWriter = null;
-	private GetMicInput mGetMicInput = null;
-	public PlayerButtom mButtom = null;
 
 	// Use this for initialization
 	void Start () {
 		next_step = STEP.RUN;	// ゲーム開始を走る状態に
 		mRigidbody = GetComponent<Rigidbody>();
-		mButtom = GetComponentInChildren<PlayerButtom>();
-		//mButtom = Resources.Load("Prefabs/Player/Buttom") as PlayerButtom;
-		//mCsvWriter = GetComponent<csv_GetVolume>();
-		//mGetMicInput = GetComponent<GetMicInput>();
-		//mCsvWriter.Start();
 	}
 
 	// Update is called once per frame
@@ -125,7 +117,7 @@ public class PlayerControl : MonoBehaviour {
 			case STEP.JUMP:	// ジャンプ中の場合
 				do {
 					// ボタンが離された瞬間でなかった場合
-					if(! Input.GetMouseButtonUp(0)) {
+					if(Input.GetMouseButton(0)) {
 						break;
 					}
 					// 減速済みなら　(複数回減速しないように)
