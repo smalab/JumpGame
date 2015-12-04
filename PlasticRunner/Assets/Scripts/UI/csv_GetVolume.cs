@@ -24,23 +24,23 @@ public class csv_GetVolume : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//0.2s gotoni data wo toru
-		// mTime += Time.deltaTime;
-		// if (mTime >= 0.1f) {
-		// 	logSave ( GetMicInput.loudness.ToString(), AverageVoice.aveVoice.ToString() );
-		// 	mTime = 0.0f;
-		// }
+		//mTime += Time.deltaTime;
+		if (PlayerControl.step == PlayerControl.STEP.JUMP) {
+			LogSave (GetMicInput.loudness.ToString());
+			//mTime = 0.0f;
+		}
 
 
 	}
 
-	public void LogSave(){
+	void LogSave(string aVolume){
 		//mAverageVoice = GetComponent<GetMicInput>();
 		FileStream mLogSave = new System.IO.FileStream("Assets/log.csv", FileMode.Append, FileAccess.Write);
 		Encoding utf8Enc = Encoding.GetEncoding("UTF-8");
 		StreamWriter writer = new StreamWriter(mLogSave, utf8Enc);
-		writer.Write(GetMicInput.loudness.ToString() + ",");
-        writer.Write(GetMicInput.m_aveVoice.ToString() + ",");
-        writer.Write(" " + ",");
+		writer.Write(aVolume /*+ ","*/);
+        //writer.Write(GetMicInput.m_aveVoice.ToString() + ",");
+        //writer.Write(" " + ",");
         writer.WriteLine("");
 		writer.Close();
 	}

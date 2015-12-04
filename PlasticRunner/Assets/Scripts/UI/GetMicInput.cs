@@ -29,7 +29,7 @@ public class GetMicInput : MonoBehaviour {
     void Update () {
         CalcLoudness();
         CalcAveVoiceVolume();
-        Debug.Log(loudness);
+        //Debug.Log(loudness);
     }
  
     //現フレームの音量を計算します.

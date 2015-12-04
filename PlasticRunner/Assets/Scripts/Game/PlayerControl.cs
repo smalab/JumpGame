@@ -23,7 +23,7 @@ public class PlayerControl : MonoBehaviour {
 		NUM,			// 状態が何種類があるかを示す（=3）
 	};
 
-	public STEP step = STEP.NONE;	// Playerの現在の状態
+	public static STEP step = STEP.NONE;	// Playerの現在の状態
 	public STEP next_step = STEP.NONE;	// Playerの次の状態
 
 	public float step_timer = 0.0f;	// 経過時間
@@ -43,8 +43,8 @@ public class PlayerControl : MonoBehaviour {
 		mRigidbody = GetComponent<Rigidbody>();
 		mButtom = GetComponentInChildren<PlayerButtom>();
 		//mButtom = Resources.Load("Prefabs/Player/Buttom") as PlayerButtom;
-		mCsvWriter = GetComponent<csv_GetVolume>();
-		mGetMicInput = GetComponent<GetMicInput>();
+		//mCsvWriter = GetComponent<csv_GetVolume>();
+		//mGetMicInput = GetComponent<GetMicInput>();
 		//mCsvWriter.Start();
 	}
 
@@ -87,7 +87,7 @@ public class PlayerControl : MonoBehaviour {
 						}
 					break;
 				case STEP.JUMP:	// ジャンプ中の場合
-					mCsvWriter.LogSave();
+					//mCsvWriter.LogSave();
 					if(mButtom.IsLanded == false) {
 						// ジャンプ中で着地していたら、次の状態を走行中に変更
 						next_step = STEP.RUN;

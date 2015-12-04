@@ -140,13 +140,13 @@
 	"buffers":
 	[
 		{
-			"contents": "using UnityEngine;\nusing System.IO;\nusing System;\nusing System.Text;\n\npublic class csv_GetVolume : MonoBehaviour {\n\n	//private float mTime = 0.0f;\n    public static GetMicInput mAverageVoice = null;\n\n	// Use this for initialization\n	public void Start () {\n\n		if (File.Exists(\"Assets/log.csv\")) {\n			// Debug.Log(\"fileatta\");\n			FileStream f = new System.IO.FileStream(\"Assets/log.csv\", FileMode.Append, FileAccess.Write);\n			Encoding utf8Enc = Encoding.GetEncoding(\"UTF-8\");\n			StreamWriter writer = new StreamWriter(f, utf8Enc);\n			writer.WriteLine(\"\");\n			writer.Close();\n		}\n	}\n	\n	// Update is called once per frame\n	void Update () {\n		//0.2s gotoni data wo toru\n		// mTime += Time.deltaTime;\n		// if (mTime >= 0.1f) {\n		// 	logSave ( GetMicInput.loudness.ToString(), AverageVoice.aveVoice.ToString() );\n		// 	mTime = 0.0f;\n		// }\n\n\n	}\n\n	public void LogSave(){\n		//mAverageVoice = GetComponent<GetMicInput>();\n		FileStream mLogSave = new System.IO.FileStream(\"Assets/log.csv\", FileMode.Append, FileAccess.Write);\n		Encoding utf8Enc = Encoding.GetEncoding(\"UTF-8\");\n		StreamWriter writer = new StreamWriter(mLogSave, utf8Enc);\n		writer.Write(GetMicInput.loudness.ToString() + \",\");\n        writer.Write(GetMicInput.m_aveVoice.ToString() + \",\");\n        writer.Write(\" \" + \",\");\n        writer.WriteLine(\"\");\n		writer.Close();\n	}\n}\n",
+			"contents": "using UnityEngine;\nusing System.IO;\nusing System;\nusing System.Text;\n\npublic class csv_GetVolume : MonoBehaviour {\n\n	//private float mTime = 0.0f;\n    public static GetMicInput mAverageVoice = null;\n\n	// Use this for initialization\n	public void Start () {\n\n		if (File.Exists(\"Assets/log.csv\")) {\n			// Debug.Log(\"fileatta\");\n			FileStream f = new System.IO.FileStream(\"Assets/log.csv\", FileMode.Append, FileAccess.Write);\n			Encoding utf8Enc = Encoding.GetEncoding(\"UTF-8\");\n			StreamWriter writer = new StreamWriter(f, utf8Enc);\n			writer.WriteLine(\"\");\n			writer.Close();\n		}\n	}\n	\n	// Update is called once per frame\n	void Update () {\n		//0.2s gotoni data wo toru\n		//mTime += Time.deltaTime;\n		if (PlayerControl.step == PlayerControl.STEP.JUMP) {\n			LogSave (GetMicInput.loudness.ToString());\n			//mTime = 0.0f;\n		}\n\n\n	}\n\n	void LogSave(string aVolume){\n		//mAverageVoice = GetComponent<GetMicInput>();\n		FileStream mLogSave = new System.IO.FileStream(\"Assets/log.csv\", FileMode.Append, FileAccess.Write);\n		Encoding utf8Enc = Encoding.GetEncoding(\"UTF-8\");\n		StreamWriter writer = new StreamWriter(mLogSave, utf8Enc);\n		writer.Write(aVolume /*+ \",\"*/);\n        //writer.Write(GetMicInput.m_aveVoice.ToString() + \",\");\n        //writer.Write(\" \" + \",\");\n        writer.WriteLine(\"\");\n		writer.Close();\n	}\n}\n",
 			"file": "Assets/Scripts/UI/csv_GetVolume.cs",
-			"file_size": 1383,
-			"file_write_time": 130936052881954366,
+			"file_size": 1359,
+			"file_write_time": 130936847187311884,
 			"settings":
 			{
-				"buffer_size": 1333,
+				"buffer_size": 1309,
 				"line_ending": "Windows",
 				"scratch": true
 			}
@@ -155,7 +155,7 @@
 			"file": "Assets/Scripts/UI/GetMicInput.cs",
 			"settings":
 			{
-				"buffer_size": 2136,
+				"buffer_size": 2138,
 				"line_ending": "Windows"
 			}
 		},
@@ -163,7 +163,7 @@
 			"file": "Assets/Scripts/Game/PlayerControl.cs",
 			"settings":
 			{
-				"buffer_size": 5321,
+				"buffer_size": 5334,
 				"line_ending": "Windows"
 			}
 		},
@@ -233,9 +233,9 @@
 	],
 	"file_history":
 	[
+		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/log.csv",
 		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/Scripts/UI/GetMicInput.cs",
 		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/PlasticRunner.sublime-project",
-		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/log.csv",
 		"/C/Users/cho-c_000/AppData/Roaming/Sublime Text 3/Packages/OmniSharp/PrebuiltOmniSharpServer/config.json",
 		"/C/Users/cho-c_000/AppData/Roaming/Sublime Text 3/Packages/User/OmniSharpSublime.sublime-settings",
 		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/Scripts/UI/FollowingObject.cs",
@@ -353,7 +353,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -362,15 +362,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1333,
+						"buffer_size": 1309,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								838,
-								838
+								1146,
+								1146
 							]
 						],
 						"settings":
@@ -378,51 +378,16 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
@@ -432,7 +397,42 @@
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
-								"bh_round_content"
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
 							],
 							"in_converting": true,
 							"oops":
@@ -441,8 +441,7 @@
 								"347,353": "Qualifier is redundant",
 								"36,41": "Using directive is not used by code and can be removed safely.",
 								"83,96": "'csv_GetVolume' should start with an upper case letter. (Rule 'Types')",
-								"853,860": "Method 'LogSave' can be made static.",
-								"941,947": "Qualifier is redundant"
+								"933,939": "Qualifier is redundant"
 							},
 							"origin_encoding": "UTF-8-SIG",
 							"revert_to_scratch": true,
@@ -450,10 +449,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 324.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -462,15 +461,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2136,
+						"buffer_size": 2138,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								458,
-								458
+								1028,
+								1028
 							]
 						],
 						"settings":
@@ -478,51 +477,16 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
@@ -532,7 +496,42 @@
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
-								"bh_round_content"
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
 							],
 							"oops":
 							{
@@ -548,7 +547,7 @@
 						"translation.y": 540.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -557,15 +556,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5321,
+						"buffer_size": 5334,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2804,
-								2804
+								796,
+								796
 							]
 						],
 						"settings":
@@ -573,51 +572,16 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
@@ -627,20 +591,55 @@
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
-								"bh_round_content"
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
 							],
 							"oops":
 							{
 								"19,24": "Using directive is not used by code and can be removed safely.",
-								"2609,2610": "Comparison with 'true' is redundant",
+								"2620,2621": "Comparison with 'true' is redundant",
 								"271,283": "'ACCELERATION' should start with a lower case letter. (Rule 'Fields')",
-								"2841,2842": "Comparison with 'false' is redundant",
+								"2854,2855": "Comparison with 'false' is redundant",
 								"321,330": "'SPEED_MIN' should start with a lower case letter. (Rule 'Fields')",
 								"370,379": "'SPEED_MAX' should start with a lower case letter. (Rule 'Fields')",
 								"419,434": "'JUMP_HEIGHT_MAX' should start with a lower case letter. (Rule 'Fields')",
 								"45,50": "Using directive is not used by code and can be removed safely.",
 								"475,498": "'JUMP_KEY_RELEASE_REDUCE' should start with a lower case letter. (Rule 'Fields')",
-								"4914,4915": "Comparison with 'false' is redundant",
+								"4927,4928": "Comparison with 'false' is redundant",
 								"542,555": "'NARAKU_HEIGHT' should start with a lower case letter. (Rule 'Fields')",
 								"62,67": "Using directive is not used by code and can be removed safely.",
 								"76,81": "Using directive is not used by code and can be removed safely."
@@ -650,10 +649,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1350.0,
+						"translation.y": 270.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
