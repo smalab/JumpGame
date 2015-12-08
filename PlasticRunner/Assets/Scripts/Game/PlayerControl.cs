@@ -34,10 +34,12 @@ public class PlayerControl : MonoBehaviour {
 	private float click_timer = -3.0f; // ボタンが押されてからの時間.
 	private float CLICK_GRACE_TIME = 0.5f; // 「ジャンプしたい意志」を受け付ける時間.
 	private Rigidbody mRigidbody = null;
+	private Animation mPlayerAnimation;
 
 	void Start() {
 		next_step = STEP.RUN;
 		mRigidbody = GetComponent<Rigidbody>();
+		mPlayerAnimation = transform.GetComponentInChildren<Animation>();
 	}
 
 
@@ -174,7 +176,7 @@ public class PlayerControl : MonoBehaviour {
 		case STEP.JUMP: // ジャンプ中の場合.
 			do {
 				// 「ボタンが離された瞬間」じゃなかったら.
-				if(! Input.GetMouseButtonUp(0) && 
+				if(/*! Input.GetMouseButtonUp(0) && */
 					GetMicInput.loudness >= 1.0f)
 				{
 					break; // 何もせずにループを抜ける.
