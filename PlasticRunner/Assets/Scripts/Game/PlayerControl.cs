@@ -17,7 +17,7 @@ public class PlayerControl : MonoBehaviour {
 		NUM, // 状態が何種類あるかを示す（＝3）.
 	};
 
-	public STEP step = STEP.NONE; // Playerの現在の状態.
+	public static STEP step = STEP.NONE; // Playerの現在の状態.
 	public STEP next_step = STEP.NONE; // Playerの次の状態.
 	public float step_timer = 0.0f; // 経過時間.
 	private bool is_landed = false; // 着地しているかどうか.
@@ -174,7 +174,9 @@ public class PlayerControl : MonoBehaviour {
 		case STEP.JUMP: // ジャンプ中の場合.
 			do {
 				// 「ボタンが離された瞬間」じゃなかったら.
-				if(! Input.GetMouseButtonUp(0)) {
+				if(! Input.GetMouseButtonUp(0) && 
+					GetMicInput.loudness >= 1.0f)
+				{
 					break; // 何もせずにループを抜ける.
 				}
 				// 減速済みなら（二回以上減速しないように）.
@@ -197,12 +199,12 @@ public class PlayerControl : MonoBehaviour {
 		case STEP.MISS:
 			// 加速値（ACCELERATION）を引き算して、Playerの速度を遅くしていく.
 			velocity.x -= PlayerControl.ACCELERATION * Time.deltaTime;
-			if(velocity.x < 0.0f) { // Playerの速度が負の数なら.
-				//velocity.x = 0.0f; // ゼロにする.
-				transform.position = new Vector3(transform.position.x, 4, transform.position.z);
-				mRigidbody.velocity = new Vector3(mRigidbody.velocity.x, 0, mRigidbody.velocity.z);
-				next_step = STEP.RUN;
-			}
+			// if(velocity.x < 0.0f) { // Playerの速度が負の数なら.
+			// 	velocity.x = 0.0f; // ゼロにする.
+			// }
+			transform.position = new Vector3(transform.position.x, 4, transform.position.z);
+			mRigidbody.velocity = new Vector3(mRigidbody.velocity.x, 0, mRigidbody.velocity.z);
+			next_step = STEP.RUN;
 			break;
 		
 		}
