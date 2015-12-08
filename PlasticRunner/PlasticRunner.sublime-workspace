@@ -152,18 +152,22 @@
 			}
 		},
 		{
+			"contents": "using UnityEngine;\nusing System.Collections;\n\n// 空の Audio Source を作って置く\n[RequireComponent (typeof (AudioSource))]\npublic class GetMicInput : MonoBehaviour {\n    float lastLoudness;         //前フレームの音量.\n    public static float m_aveVoice;       //平均的な声の音量\n    public float second = 300.0f;\n    static public float loudness;             //音量.\n    public float sensitivity = 100.0f;     //感度.音量の最大値.\n    public float lastLoudnessInfluence; //前フレームの影響度合い.\n\n    //public float AveVoice {get { return m_aveVoice; } }\n\n    void Start() \n    {\n        // 空の Audio Sourceを取得\n        var audio = GetComponent<AudioSource>();\n        // Audio Source の Audio Clip をマイク入力に設定\n        // 引数は、デバイス名（null ならデフォルト）、ループ、何秒取るか、サンプリング周波数\n        audio.clip = Microphone.Start(\"Microphone\", false, 300, 44100);\n        // マイクが Ready になるまで待機（一瞬）\n        while (Microphone.GetPosition(null) <= 0) {}\n        // 再生開始（録った先から再生、スピーカーから出力するとハウリングします）\n        audio.Play();\n    }\n\n    void Update () {\n        CalcLoudness();\n        CalcAveVoiceVolume();\n        //Debug.Log(loudness);\n    }\n \n    //現フレームの音量を計算します.\n    //マイクの感度が良すぎる場合は, lastLoudnessInfluence を上げたりして調節しましょう.\n    void CalcLoudness() {\n        lastLoudness = loudness;\n        loudness = GetAveragedVolume() * sensitivity * ( 1 - lastLoudnessInfluence )\n                   + lastLoudness * lastLoudnessInfluence;\n    }\n\n    //ユーザーの声の平均的な音量を計算する\n    public void CalcAveVoiceVolume ()\n    {\n        m_aveVoice += lastLoudness;\n        second -= Time.deltaTime;\n        if (second <= 0.0f)\n        {\n            m_aveVoice /= second;\n        }\n    }\n \n    //現フレームで再生されている AudioClip から平均的な音量を取得します.\n    float GetAveragedVolume()\n    {\n        //AudioClip の情報を格納する配列.\n        //256は適当です.少なすぎれば平均的なサンプルデータが得られなくなるかもしれず,\n        //多すぎれば計算量が増えますので良い感じに...\n        float[] data = new float[256];\n        //最終的に返す音量データ.\n        float a = 0;\n        //AudioClipからデータを抽出します.\n        var audio = GetComponent<AudioSource>();\n        audio.GetOutputData(data, 0);\n        //音データを絶対値に変換します.\n        foreach(float s in data)\n        {\n            a += Mathf.Abs(s);\n        }\n        //平均を返します.\n        return a/256;\n    }\n}\n",
 			"file": "Assets/Scripts/UI/GetMicInput.cs",
+			"file_size": 2909,
+			"file_write_time": 130936935110149207,
 			"settings":
 			{
-				"buffer_size": 2138,
-				"line_ending": "Windows"
+				"buffer_size": 2146,
+				"line_ending": "Windows",
+				"scratch": true
 			}
 		},
 		{
 			"file": "Assets/Scripts/Game/PlayerControl.cs",
 			"settings":
 			{
-				"buffer_size": 5334,
+				"buffer_size": 4966,
 				"line_ending": "Windows"
 			}
 		},
@@ -233,6 +237,7 @@
 	],
 	"file_history":
 	[
+		"/C/Users/cho-c_000/Desktop/v1.1_win_64bit/Readme.txt",
 		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/log.csv",
 		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/Assets/Scripts/UI/GetMicInput.cs",
 		"/C/Users/cho-c_000/Documents/GitHub/JumpGame/PlasticRunner/PlasticRunner.sublime-project",
@@ -378,26 +383,6 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
@@ -408,21 +393,6 @@
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
@@ -432,7 +402,42 @@
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
-								"bh_square_content"
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
 							],
 							"in_converting": true,
 							"oops":
@@ -461,15 +466,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2138,
+						"buffer_size": 2146,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1028,
-								1028
+								0,
+								0
 							]
 						],
 						"settings":
@@ -533,12 +538,14 @@
 								"bh_square_close",
 								"bh_square_content"
 							],
+							"in_converting": true,
 							"oops":
 							{
 								"19,24": "Using directive is not used by code and can be removed safely.",
 								"1902,1907": "Local variable 'audio' hides property 'UnityEngine.Component.audio'",
 								"577,582": "Local variable 'audio' hides property 'UnityEngine.Component.audio'"
 							},
+							"origin_encoding": "UTF-8-SIG",
 							"syntax": "Packages/C#/C#.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
@@ -556,15 +563,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5334,
+						"buffer_size": 4966,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								796,
-								796
+								0,
+								0
 							]
 						],
 						"settings":

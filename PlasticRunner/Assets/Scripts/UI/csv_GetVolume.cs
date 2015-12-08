@@ -25,10 +25,10 @@ public class csv_GetVolume : MonoBehaviour {
 	void Update () {
 		//0.2s gotoni data wo toru
 		//mTime += Time.deltaTime;
-		if (PlayerControl.step == PlayerControl.STEP.JUMP) {
-			LogSave (GetMicInput.loudness.ToString());
-			//mTime = 0.0f;
-		}
+		// if (PlayerControl.step == PlayerControl.STEP.JUMP) {
+		// 	LogSave (GetMicInput.loudness.ToString());
+		// 	//mTime = 0.0f;
+		// }
 
 
 	}
