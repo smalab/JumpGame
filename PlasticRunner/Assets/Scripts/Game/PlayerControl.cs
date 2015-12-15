@@ -33,6 +33,7 @@ public class PlayerControl : MonoBehaviour {
 
 	private float click_timer = -3.0f; // ボタンが押されてからの時間.
 	private float CLICK_GRACE_TIME = 0.5f; // 「ジャンプしたい意志」を受け付ける時間.
+
 	private Rigidbody mRigidbody = null;
 	private Animation mPlayerAnimation;
 
@@ -74,13 +75,22 @@ public class PlayerControl : MonoBehaviour {
 
 		switch(step) {
 		case STEP.RUN:
+                {
+                    mPlayerAnimation.CrossFade("02_Move", 0.1f);
+                }
+                break;
+
 		case STEP.JUMP:
-			// 現在の位置がしきい値よりも下ならば.
-			if(transform.position.y < NARAKU_HEIGHT) {
+                mPlayerAnimation.CrossFade("03_jumpup", 0.1f);
+
+    			// 現在の位置がしきい値よりも下ならば.
+	    		if(transform.position.y < NARAKU_HEIGHT)
+                {
 				next_step = STEP.MISS; // 「ミス」状態にする.
-			}
-			break;
-		}
+
+			    }
+			    break;
+		    }
 
 
 		step_timer += Time.deltaTime; // 経過時間を進める.
@@ -111,7 +121,7 @@ public class PlayerControl : MonoBehaviour {
 				}
 				*/
 				// click_timerが0以上、CLICK_GRACE_TIME以下ならば.
-				if(0.0f <= click_timer && click_timer <= CLICK_GRACE_TIME){
+				if(/*0.0f <= click_timer && click_timer <= CLICK_GRACE_TIME*/ GetMicInput.loudness >= 3.0f){
 					if(is_landed){ // 着地しているならば.
 						click_timer = -1.0f; // 「ボタンが押されていない」ことを表す -1.0f に.
 						next_step = STEP.JUMP; // ジャンプ状態にする.
@@ -176,8 +186,7 @@ public class PlayerControl : MonoBehaviour {
 		case STEP.JUMP: // ジャンプ中の場合.
 			do {
 				// 「ボタンが離された瞬間」じゃなかったら.
-				if(/*! Input.GetMouseButtonUp(0) && */
-					GetMicInput.loudness >= 1.0f)
+				if(/*! Input.GetMouseButtonUp(0)*/ GetMicInput.loudness >= 1.0f)
 				{
 					break; // 何もせずにループを抜ける.
 				}
