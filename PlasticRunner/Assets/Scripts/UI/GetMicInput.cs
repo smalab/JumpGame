@@ -10,7 +10,7 @@ public class GetMicInput : MonoBehaviour {
     static public float loudness;             //現フレームの音量.
     public float sensitivity = 100.0f;     //感度.音量の最大値.
     public float lastLoudnessInfluence; //前フレームの影響度合い.
-    private AudioSource mAudio = null;
+    private AudioSource mAudio = null;  //マイクからの入力を取得する
 
     //public float AveVoice {get { return m_aveVoice; } }
 
@@ -20,7 +20,8 @@ public class GetMicInput : MonoBehaviour {
         mAudio = GetComponent<AudioSource>();
         // Audio Source の Audio Clip をマイク入力に設定
         // 引数は、デバイス名（null ならデフォルト）、ループ、何秒取るか、サンプリング周波数
-        mAudio.clip = Microphone.Start("Microphone", false, 300, 44100);
+        mAudio.clip = Microphone.Start(null , false, 300, 44100);
+        //mAudio.mute = true;
         // マイクが Ready になるまで待機（一瞬）
         while (Microphone.GetPosition(null) <= 0) {}
         // 再生開始（録った先から再生、スピーカーから出力するとハウリングします）
@@ -30,8 +31,8 @@ public class GetMicInput : MonoBehaviour {
     void Update () {
         CalcLoudness();
         CalcAveVoiceVolume();
-        Debug.Log(loudness);
-        Debug.Log(mAudio.clip.length);
+        //Debug.Log(loudness);
+        //Debug.Log(mAudio.volume);
     }
  
     //現フレームの音量を計算します.

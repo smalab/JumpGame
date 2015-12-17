@@ -23,19 +23,16 @@ public class PlayerControl : MonoBehaviour {
 	private bool is_landed = false; // 着地しているかどうか.
 	//private bool is_colided = false; // 何かとぶつかっているかどうか.
 	private bool is_key_released = false; // ボタンが離されているかどうか.
-
-
-	public static float NARAKU_HEIGHT = -5.0f;
-
-
+    public static float NARAKU_HEIGHT = -5.0f;
 	public float current_speed = 0.0f; // 現在のスピード.
 	public LevelControl level_control = null; // LevelControlを保持.
+    private float click_timer = -3.0f; // ボタンが押されてからの時間.
+	//private float CLICK_GRACE_TIME = 0.5f; // 「ジャンプしたい意志」を受け付ける時間.
 
-	private float click_timer = -3.0f; // ボタンが押されてからの時間.
-	private float CLICK_GRACE_TIME = 0.5f; // 「ジャンプしたい意志」を受け付ける時間.
-
+    //自分で追加した分
 	private Rigidbody mRigidbody = null;
 	private Animation mPlayerAnimation;
+    private float mDuration = 0.0f;  //音声が入力されている時間を格納
 
 	void Start() {
 		next_step = STEP.RUN;
@@ -69,6 +66,7 @@ public class PlayerControl : MonoBehaviour {
 
 
 	void Update() {
+        Debug.Log(mDuration);
 		Vector3 velocity = mRigidbody.velocity; // 速度を設定.
 		current_speed = level_control.getPlayerSpeed();
 		check_landed(); // 着地状態かどうかをチェック.
@@ -137,6 +135,8 @@ public class PlayerControl : MonoBehaviour {
 					// 次の状態を走行中に変更.
 					next_step = STEP.RUN;
 				}
+
+                if(GetMicInput.loudness >= 3.0f) mDuration += Time.deltaTime;
 				break;
 			}
 		}
@@ -186,9 +186,11 @@ public class PlayerControl : MonoBehaviour {
 		case STEP.JUMP: // ジャンプ中の場合.
 			do {
 				// 「ボタンが離された瞬間」じゃなかったら.
-				if(/*! Input.GetMouseButtonUp(0)*/ GetMicInput.loudness >= 1.0f)
+				if(/*! Input.GetMouseButtonUp(0)*/ /*GetMicInput.loudness >= 1.0f*/ mDuration >= 0.0f)
 				{
-					break; // 何もせずにループを抜ける.
+                        mDuration -= Time.deltaTime;
+                        if (mDuration <= 0.0f)
+                            break; // 何もせずにループを抜ける.
 				}
 				// 減速済みなら（二回以上減速しないように）.
 				if(is_key_released) {
@@ -199,10 +201,17 @@ public class PlayerControl : MonoBehaviour {
 				if(velocity.y <= 0.0f) {
 					break; // 何もせずにループを抜ける.
 				}
+
+                    //if (mDuration >= 0.0f)
+                    //    mDuration -= Time.deltaTime;
+                    //else
+                    //    break;
+
 				// ボタンが離されていて、上昇中なら、減速開始.
 				// ジャンプの上昇はここでおしまい.
 				velocity.y *= JUMP_KEY_RELEASE_REDUCE;
 				is_key_released = true;
+                    mDuration = 0.0f;
 			} while(false);
 			break;
 		
