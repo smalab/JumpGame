@@ -17,6 +17,7 @@ public class RecordAudio : MonoBehaviour {
 
     void StartRecording()
     {
+        //看板に表示されたアルファベットに応じてmp3ファイルをロード
         mRecordAudio.clip = Microphone.Start(null, false, 3, 44100);
     }
 }
