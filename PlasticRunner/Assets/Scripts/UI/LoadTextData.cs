@@ -1,19 +1,22 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class LoadTxtData : MonoBehaviour {
-    Text mTextSign = (Resources.Load("Prefabs/CanvasSign/Panel/Text")) as Text;
+public class LoadTextData : MonoBehaviour {
+    //Text mTextSign = (Resources.Load("Prefabs/CanvasSign/Panel/Text")) as Text;
     public TextAsset mAlphabetTextAsset = null;
     string mAlphabetText = "";
-    string[] mLines = null;
+    static public string[] mLines = null;
     //オーディオファイルをロードするためのプロパティ
-    public string GetLinesIndex { get { return mLines[idx]; } }
-    int idx = 0;
+    static public string mExportText = "";
+    static public int idx = 0;
+    static public Text mText = null;
 
     // Use this for initialization
     void Start () {
+        mText = GetComponent<Text>();
         LoadText();
         ShowText();
+        //ExportText();
     }
 	
 	// Update is called once per frame
@@ -30,7 +33,14 @@ public class LoadTxtData : MonoBehaviour {
     {
         System.Random rnd = new System.Random();
         idx = rnd.Next(mLines.Length);
-        mTextSign.GetComponent<Text>().text = mLines[idx];
-        Debug.Log(mLines[idx]);
+        mText.text = mLines[idx];
+    }
+
+    void ExportText()
+    {
+        if (mExportText == "")
+            mExportText = mLines[idx];
+        else
+            mExportText = "";
     }
 }
