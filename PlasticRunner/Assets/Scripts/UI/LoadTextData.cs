@@ -3,11 +3,10 @@ using UnityEngine.UI;
 
 public class LoadTextData : MonoBehaviour {
     //Text mTextSign = (Resources.Load("Prefabs/CanvasSign/Panel/Text")) as Text;
-    public TextAsset mAlphabetTextAsset = null;
+    TextAsset mAlphabetTextAsset = null;
     string mAlphabetText = "";
-    static public string[] mLines = null;
-    //オーディオファイルをロードするためのプロパティ
-    static public string mExportText = "";
+    string[] mLines = null;
+    //static public string mExportText = "";
     static public int idx = 0;
     static public Text mText = null;
 
@@ -32,15 +31,15 @@ public class LoadTextData : MonoBehaviour {
     void ShowText()
     {
         System.Random rnd = new System.Random();
-        idx = rnd.Next(mLines.Length);
+        idx = rnd.Next(mLines.Length - 1);
         mText.text = mLines[idx];
     }
 
-    void ExportText()
-    {
-        if (mExportText == "")
-            mExportText = mLines[idx];
-        else
-            mExportText = "";
-    }
+    //void ExportText()
+    //{
+    //    if (mExportText == "")
+    //        mExportText = mLines[idx];
+    //    else
+    //        mExportText = "";
+    //}
 }

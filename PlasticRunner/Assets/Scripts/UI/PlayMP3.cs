@@ -2,16 +2,18 @@
 using System.Collections;
 
 public class PlayMP3 : MonoBehaviour {
-    //AudioClip mAudioclip;
-	AudioSource mAudiosource;
-    //LoadTextData mLoadChr = null;
-    //string mLoadSound = "Sounds/";
+    public AudioClip[] mAudioclip;
+    AudioSource mAudiosource;
 
 	// Use this for initialization
 	void Start () {
+        mAudioclip = new AudioClip[26];
+        for(int i = 0; i < 26; i++)
+        {
+            mAudioclip[i] = Resources.Load("Sounds/" + i.ToString()) as AudioClip;
+        }
 		mAudiosource = gameObject.GetComponent<AudioSource> ();
-        //mLoadChr = GetComponent<LoadTextData>();
-        //mAudiosource.clip = /*mAudioclip*/ Resources.Load("Sounds/A") as AudioClip;
+
     }
 	
 	// Update is called once per frame
@@ -19,9 +21,7 @@ public class PlayMP3 : MonoBehaviour {
 
     public void Playmp3 ()
     {
-        Debug.Log(LoadTextData.mText.text);
-        //mAudiosource.clip = Resources.Load("Sounds/" + LoadTextData.mText.text) as AudioClip;
-        mAudiosource.PlayOneShot(Resources.Load("Sounds/" + LoadTextData.mText.text) as AudioClip);
-       
+        mAudiosource.clip = mAudioclip[LoadTextData.idx];
+        mAudiosource.PlayOneShot(mAudiosource.clip);     
     }
 }
