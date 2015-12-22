@@ -202,16 +202,14 @@ public class PlayerControl : MonoBehaviour {
 					break; // 何もせずにループを抜ける.
 				}
 
-                    //if (mDuration >= 0.0f)
-                    //    mDuration -= Time.deltaTime;
-                    //else
-                    //    break;
-
-				// ボタンが離されていて、上昇中なら、減速開始.
-				// ジャンプの上昇はここでおしまい.
-				velocity.y *= JUMP_KEY_RELEASE_REDUCE;
-				is_key_released = true;
-                    mDuration = 0.0f;
+                    // ボタンが離されていて、上昇中なら、減速開始.
+                    // ジャンプの上昇はここでおしまい.
+                    if (mDuration < 0)
+                    {
+                        velocity.y *= JUMP_KEY_RELEASE_REDUCE;
+                        is_key_released = true;
+                        mDuration = 0.0f;
+                    }
 			} while(false);
 			break;
 		

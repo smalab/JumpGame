@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SignManager : MonoBehaviour {
-    static public GameObject mSign = (Resources.Load("Prefabs/CanvasSign")) as GameObject;
+public class SignManagerScript : MonoBehaviour {
+    static public GameObject mSign = null;
     private Vector3 mSignPos = Vector3.zero;
     static public GameObject tmpObject = null;
     //private Quaternion mSignQuaternion;
@@ -10,6 +10,7 @@ public class SignManager : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        mSign = (Resources.Load("Prefabs/CanvasSign")) as GameObject;
         CreatSign(new Vector3(15.0f, 3.0f, 0.0f));
 
     }
