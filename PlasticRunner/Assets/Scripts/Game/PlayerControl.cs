@@ -33,7 +33,7 @@ public class PlayerControl : MonoBehaviour {
 	private Rigidbody mRigidbody = null;
 	private Animation mPlayerAnimation;
     private float mDuration = 0.0f;  //音声が入力されている時間を格納
-    private Vector3 mJumpLimit = Vector3.up * 9;
+    private Vector3 mJumpLimit = Vector3.up * 8.5f;
 
 	void Start() {
 		next_step = STEP.RUN;
@@ -191,10 +191,10 @@ public class PlayerControl : MonoBehaviour {
                         velocity.y = Mathf.Sqrt(2.0f * 9.8f * JUMP_HEIGHT_MAX);
                         if (transform.position.y > mJumpLimit.y)
                         {
-                            Vector3 pos = transform.position;
-                            pos.y = mJumpLimit.y;
+                            mJumpLimit.x = transform.position.x;
+                            transform.position = mJumpLimit;
                         }
-                            
+                                                  
                         Debug.Log(transform.position.y);
                         break; // 何もせずにループを抜ける.
 				}
