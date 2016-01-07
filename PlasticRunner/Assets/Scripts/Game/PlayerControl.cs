@@ -33,6 +33,7 @@ public class PlayerControl : MonoBehaviour {
 	private Rigidbody mRigidbody = null;
 	private Animation mPlayerAnimation;
     private float mDuration = 0.0f;  //音声が入力されている時間を格納
+    private Vector3 mJumpLimit = Vector3.up * 9;
 
 	void Start() {
 		next_step = STEP.RUN;
@@ -149,8 +150,7 @@ public class PlayerControl : MonoBehaviour {
 			switch(step) { // 更新された「現在の状態」が.
 			case STEP.JUMP: // 「ジャンプ」の場合.
 				// ジャンプの高さからジャンプの初速を計算（オマジナイ）.
-				velocity.y = Mathf.Sqrt(
-					2.0f * 9.8f * PlayerControl.JUMP_HEIGHT_MAX);
+				velocity.y = Mathf.Sqrt(2.0f * 9.8f * JUMP_HEIGHT_MAX);
 				// 「ボタンが離されたフラグ」をクリアーする.
 				is_key_released = false;
 				break;
@@ -186,11 +186,17 @@ public class PlayerControl : MonoBehaviour {
 		case STEP.JUMP: // ジャンプ中の場合.
 			do {
 				// 「ボタンが離された瞬間」じゃなかったら.
-				if(/*! Input.GetMouseButtonUp(0)*/ /*GetMicInput.loudness >= 1.0f*/ mDuration >= 0.0f)
+				if(/*! Input.GetMouseButtonUp(0)*/ GetMicInput.loudness >= 1.0f)
 				{
-                        mDuration -= Time.deltaTime;
-                        if (mDuration <= 0.0f)
-                            break; // 何もせずにループを抜ける.
+                        velocity.y = Mathf.Sqrt(2.0f * 9.8f * JUMP_HEIGHT_MAX);
+                        if (transform.position.y > mJumpLimit.y)
+                        {
+                            Vector3 pos = transform.position;
+                            pos.y = mJumpLimit.y;
+                        }
+                            
+                        Debug.Log(transform.position.y);
+                        break; // 何もせずにループを抜ける.
 				}
 				// 減速済みなら（二回以上減速しないように）.
 				if(is_key_released) {
@@ -203,13 +209,9 @@ public class PlayerControl : MonoBehaviour {
 				}
 
                     // ボタンが離されていて、上昇中なら、減速開始.
-                    // ジャンプの上昇はここでおしまい.
-                    if (mDuration < 0)
-                    {
-                        velocity.y *= JUMP_KEY_RELEASE_REDUCE;
-                        is_key_released = true;
-                        mDuration = 0.0f;
-                    }
+                    // ジャンプの上昇はここでおしまい.           
+                    velocity.y *= JUMP_KEY_RELEASE_REDUCE;
+                    is_key_released = true;                    
 			} while(false);
 			break;
 		
