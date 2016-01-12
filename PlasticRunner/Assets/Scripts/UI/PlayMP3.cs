@@ -19,9 +19,14 @@ public class PlayMP3 : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {}
 
-    public void Playmp3 ()
+    public void PlayAlphaMp3 ()
     {
         mAudiosource.clip = mAudioclip[LoadTextData.idx];
         mAudiosource.PlayOneShot(mAudiosource.clip);     
+    }
+
+    public void PlaySEMp3()
+    {
+
     }
 }
