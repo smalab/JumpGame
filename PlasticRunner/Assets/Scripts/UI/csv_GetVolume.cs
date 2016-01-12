@@ -12,7 +12,6 @@ public class csv_GetVolume : MonoBehaviour {
 	public void Start () {
 
 		if (File.Exists("Assets/log.csv")) {
-			// Debug.Log("fileatta");
 			FileStream f = new System.IO.FileStream("Assets/log.csv", FileMode.Append, FileAccess.Write);
 			Encoding utf8Enc = Encoding.GetEncoding("UTF-8");
 			StreamWriter writer = new StreamWriter(f, utf8Enc);
@@ -25,23 +24,31 @@ public class csv_GetVolume : MonoBehaviour {
 	void Update () {
 		//0.2s gotoni data wo toru
 		//mTime += Time.deltaTime;
-		if (PlayerControl.step == PlayerControl.STEP.JUMP) {
-			LogSave (GetMicInput.loudness.ToString());
-			//mTime = 0.0f;
-		}
-
-
+		//if (PlayerControl.step == PlayerControl.STEP.JUMP) {
+		//	LogSave (GetMicInput.loudness.ToString());
+		//}
 	}
 
-	void LogSave(string aVolume){
-		//mAverageVoice = GetComponent<GetMicInput>();
-		FileStream mLogSave = new System.IO.FileStream("Assets/log.csv", FileMode.Append, FileAccess.Write);
-		Encoding utf8Enc = Encoding.GetEncoding("UTF-8");
-		StreamWriter writer = new StreamWriter(mLogSave, utf8Enc);
-		writer.Write(aVolume /*+ ","*/);
-        //writer.Write(GetMicInput.m_aveVoice.ToString() + ",");
-        //writer.Write(" " + ",");
+    public void LogSave(string aVolume)
+    {
+        FileStream mLogSave = new FileStream("Assets/log.csv", FileMode.Append, FileAccess.Write);
+        Encoding utf8Enc = Encoding.GetEncoding("UTF-8");
+        StreamWriter writer = new StreamWriter(mLogSave, utf8Enc);
+        writer.Write(aVolume /*+ ","*/);
         writer.WriteLine("");
-		writer.Close();
-	}
+        writer.Close();
+    }
+
+    //public void logSave(string argVolume)
+    //{
+    //    StreamWriter sw;
+    //    FileStream fs;
+    //    fs = new FileStream(Application.dataPath + "log.csv", FileMode.Append, FileAccess.Write);
+    //    Encoding utf8Enc = Encoding.GetEncoding("UTF-8");
+    //    sw = new StreamWriter(fs, utf8Enc);
+    //    sw.Write(argVolume + "");
+    //    //sw.Flush();
+    //    sw.Close();
+    //}
+
 }

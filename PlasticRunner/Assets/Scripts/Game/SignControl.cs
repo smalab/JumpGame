@@ -2,13 +2,13 @@
 using System.Collections;
 
 public class SignControl : MonoBehaviour {
-    private PlayMP3 mPlaymp3 = null;
+    //private PlayMP3 mPlaymp3 = null;
     private ScoreManager mScorecontrol = null;
     private SignManagerScript mSignmanager = null;
 
     void Start()
     {
-        mPlaymp3 = GameObject.Find("AudioManager").GetComponent<PlayMP3>();
+        //mPlaymp3 = GameObject.Find("AudioManager").GetComponent<PlayMP3>();
         mScorecontrol = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
         mSignmanager = GameObject.Find("SignManager").GetComponent<SignManagerScript>();
     }
