@@ -35,7 +35,7 @@ public class PlayerControl : MonoBehaviour
     private Rigidbody mRigidbody = null;
     private Animation mPlayerAnimation;
     private float mDuration = 0.0f;  //音声が入力されている時間を格納
-    private Vector3 mJumpLimit = Vector3.up * 5.5f;
+    private Vector3 mJumpLimit = Vector3.up * 20.0f;
     private csv_GetVolume mGetVolume = null;
 
     void Start()
@@ -178,8 +178,11 @@ public class PlayerControl : MonoBehaviour
             switch (step)
             { // 更新された「現在の状態」が.
                 case STEP.JUMP: // 「ジャンプ」の場合.
-                                // ジャンプの高さからジャンプの初速を計算（オマジナイ）.
+                    // ジャンプの高さからジャンプの初速を計算（オマジナイ）.
                     velocity.y = Mathf.Sqrt(2.0f * 9.8f * JUMP_HEIGHT_MAX);
+                    if (GetMicInput.loudness > 15.0f) velocity.y = Mathf.Sqrt(2.0f * 9.8f * JUMP_HEIGHT_MAX) * 5.0f;
+                    if (GetMicInput.loudness > 7.5f) velocity.y = Mathf.Sqrt(2.0f * 9.8f * JUMP_HEIGHT_MAX) * 3.5f;
+                    if (GetMicInput.loudness < 5.0f) velocity.y = Mathf.Sqrt(2.0f * 9.8f * JUMP_HEIGHT_MAX) * 0.35f;
                     // 「ボタンが離されたフラグ」をクリアーする.
                     is_key_released = false;
                     break;
@@ -233,6 +236,7 @@ public class PlayerControl : MonoBehaviour
                             mJumpLimit.x = transform.position.x;
                             transform.position = mJumpLimit;
                         }
+                        Debug.Log(GetMicInput.loudness);
                         break; // 何もせずにループを抜ける.
                     }
                     // 減速済みなら（二回以上減速しないように）.
