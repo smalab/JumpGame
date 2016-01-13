@@ -103,7 +103,6 @@ public class PlayerControl : MonoBehaviour
                     if (transform.position.y < NARAKU_HEIGHT)
                     {
                         next_step = STEP.MISS; // 「ミス」状態にする.
-
                     }
                 }
                 break;

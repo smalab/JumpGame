@@ -2,11 +2,11 @@
 using System.Collections;
 
 public class ReCloneSign : MonoBehaviour {
-    private SignManagerScript mSignmanager = null;
+    private SignManager mSignmanager = null;
 
     void Start()
     {
-        mSignmanager = GameObject.Find("SignManager").GetComponent<SignManagerScript>();
+        mSignmanager = GameObject.Find("SignManager").GetComponent<SignManager>();
     }
 
     // Update is called once per frame
@@ -17,9 +17,7 @@ public class ReCloneSign : MonoBehaviour {
     {
         if (collider.gameObject.layer == LayerMask.NameToLayer("Sign"))
         {
-            //mPlaymp3.SendMessage("Playmp3");
-            //mScorecontrol.SendMessage("AddScore");
-            Destroy(SignManagerScript.tmpObject, 0.5f);
+            Destroy(SignManager.tmpObject, 0.5f);
             mSignmanager.SendMessage("CreateSign");
         }
     }

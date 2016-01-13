@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SignManagerScript : MonoBehaviour {
+public class SignManager : MonoBehaviour {
     static public GameObject mSign = null;
     private Vector3 mSignPos = Vector3.zero;
     static public GameObject tmpObject = null;
