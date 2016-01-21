@@ -27,6 +27,7 @@ public class SignManager : MonoBehaviour {
         tmpObject = (GameObject) Instantiate(mSign, Vector3.zero, Quaternion.identity);
         tmpObject.transform.position = new Vector3(mSignPos.x + Random.Range(30.0f, 45.0f), 
                                                    Random.Range(2.0f, 4.0f), tmpObject.transform.position.z);
+        tmpObject.transform.Rotate(new Vector3(0f, 90f, 0f));
         mSignPos = tmpObject.transform.position;
     }
 

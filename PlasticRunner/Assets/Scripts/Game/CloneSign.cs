@@ -3,7 +3,6 @@ using System.Collections;
 
 public class CloneSign : MonoBehaviour {
     public GameObject mCloneobj;
-
 	// Use this for initialization
 	void Start () {
 	
@@ -11,6 +10,7 @@ public class CloneSign : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        mCloneobj = GameObject.Instantiate(mCloneobj) as GameObject;
-	}
+        mCloneobj = Instantiate(mCloneobj) as GameObject;
+        mCloneobj.transform.Rotate(new Vector3(0f, 90f, 0f));
+    }
 }
