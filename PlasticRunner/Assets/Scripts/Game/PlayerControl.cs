@@ -77,7 +77,7 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log(mDuration);
+        
         Vector3 velocity = mRigidbody.velocity; // 速度を設定.
         current_speed = level_control.getPlayerSpeed();
         check_landed(); // 着地状態かどうかをチェック.
@@ -236,7 +236,7 @@ public class PlayerControl : MonoBehaviour
                             mJumpLimit.x = transform.position.x;
                             transform.position = mJumpLimit;
                         }
-                        Debug.Log(GetMicInput.loudness);
+                        
                         break; // 何もせずにループを抜ける.
                     }
                     // 減速済みなら（二回以上減速しないように）.
