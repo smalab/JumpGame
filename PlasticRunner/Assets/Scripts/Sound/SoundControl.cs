@@ -4,18 +4,12 @@ using System.Collections;
 public class Sound{
 	public enum SOUND{
 		NON = -1,
-		JINGLE = 0,
-		CAT,
-		CLICK,
-		COIN_DROP,
-		COIN_GET,
-		FOOT1,
-		FOOT2,
-		JUMP,
-		TDOWN,
-		JUMP1,
-		JUMP2,
-		MISS,
+        FOOT1 = 0,
+        FOOT2,
+        JUMP,
+        TDOWN,
+        JUMP1,
+        JUMP2,
 		NUM,
 	}
 
@@ -38,7 +32,7 @@ public class SoundControl : MonoBehaviour {
 	public AudioClip[]	bgmclip;
 	public AudioSource[]	bgmsource;
 
-	private	Sound.BGM	current_bgm = Sound.BGM.NON;			// 再生中の BMG.
+	private	Sound.BGM	current_bgm = Sound.BGM.NON;			// 再生中のBGM.
 
 	void Start () {
 		this.audiosource = new AudioSource[this.audioclip.Length];

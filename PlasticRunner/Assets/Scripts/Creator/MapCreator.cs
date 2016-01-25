@@ -1,123 +1,210 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Block {
-	// ブロックの種類を表す列挙体
-	public enum TYPE {
-		NONE = -1,	// なし
-		FLOOR = 0,	// 床
-		HOLE,		// 穴
-		NUM,		// ブロックが何種類あるかを示す（2）
-	};
+// ブロック.
+public class Block
+{
+
+    // 種類.
+    public enum TYPE
+    {
+
+        NONE = -1,
+
+        FLOOR = 0,          // 床.
+        HOLE,               // 穴.
+
+        NUM,
+    };
 };
 
-public class MapCreator : MonoBehaviour {
-	private GameRoot game_root = null;
-	public TextAsset level_data_text = null;
-	public static float BLOCK_WIDTH = 1.0f;			// ブロックの幅
-	public static float BLOCK_HEIGHT = 0.2f;		// ブロックの高さ
-	public static int	BLOCK_NUM_IN_SCREEN = 24;	// 画面内に収まるブロックの個数
+// マップツクラー（ツクラー = 作る + er）.
+public class MapCreator : MonoBehaviour
+{
 
-	private LevelControl level_control = null;
+    public TextAsset level_data_text = null;
 
-	// ブロックに関する情報をまとめて管理するための構造体
-	private struct FloorBlock {
-		public bool is_created;		// ブロックが作成済みか否か
-		public Vector3 position;	// ブロックの位置
-	};
+    // ================================================================ //
 
-	private FloorBlock last_block;			// 最後に作成したブロック
-	private PlayerControl player = null;	// シーン上のPlayerを保管
-	private BlockCreator block_creator;		// BlockCreatorを保管
+    public static float BLOCK_WIDTH = 1.0f;     // ブロックの幅　（X方向のサイズ）.
+    public static float BLOCK_HEIGHT = 0.2f;        // ブロックの高さ（Y方向のサイズ）.
+    public static int BLOCK_NUM_IN_SCREEN = 24; // 一画面中のブロックの数（横方向）.
 
-	// Use this for initialization
-	void Start () {
-		this.player = GameObject.FindGameObjectWithTag
-			("Player").GetComponent<PlayerControl>();
-		this.last_block.is_created = false;
-		this.block_creator = this.gameObject.GetComponent<BlockCreator>();
+
+    // 床ブロック.
+    // ブロックがない場所を『空のブロックがある』とすることで、
+    // ブロックのある場所と同じように扱えるようにする.
+    private struct FloorBlock
+    {
+
+        public bool is_created;                     // false のときはいっこもブロックが作られてない.	
+        public Vector3 position;                        // 位置.
+    };
+
+    private PlayerControl player = null;                // プレイヤー.
+    private FloorBlock last_block;                  // 最後に作ったブロック.
+
+    private GameRoot game_root = null;      // ゲームの進行管理.
+    private LevelControl level_control = null;      // ブロック配置の管理（マップパターン。次に作るブロックのタイプを決める）.
+    private BlockCreator block_creator = null;      // ブロックツクラー.
+    //private CoinCreator coin_creator = null;        // コインツクラー.
+    //private EnemyCreator enemy_creator = null;      // おじゃまキャラツクラー.
+
+    // ================================================================ //
+    // MonoBehaviour からの継承.
+
+    void Start()
+    {
+        this.player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
+
+        //
+
+        this.last_block.is_created = false;
 
         this.level_control = gameObject.AddComponent<LevelControl>();
-		this.level_control.initialize();
-		this.level_control.loadLevelData(this.level_data_text);
-		this.game_root = this.gameObject.GetComponent<GameRoot>();
-		this.player.level_control = this.level_control;
-	}
+        this.level_control.initialize();
+        this.level_control.loadLevelData(this.level_data_text);
 
-	// Update is called once per frame
-	void Update () {
-		// プレイヤーのX位置を取得
-		float block_generate_x = this.player.transform.position.x;
+        this.player.level_control = this.level_control;
 
-		// 約半画面分、右へ移動
-		// ブロックを生み出すしきい値
-		block_generate_x += BLOCK_WIDTH * ( (float)BLOCK_NUM_IN_SCREEN + 1 ) / 2.0f;
+        //
 
-		// 最後に作成したブロックの位置がしきい値より小さい間
-		while(this.last_block.position.x < block_generate_x) {
-			// ブロックを生成
-			this.create_floor_block();
-		}
-	}
+        this.game_root = this.gameObject.GetComponent<GameRoot>();
+        this.block_creator = this.gameObject.GetComponent<BlockCreator>();
+        //this.coin_creator = this.gameObject.GetComponent<CoinCreator>();
+        //this.enemy_creator = this.gameObject.GetComponent<EnemyCreator>();
 
-	private void create_floor_block() {
-		Vector3 block_position;				// これから作るブロックの位置
+        this.block_creator.map_creator = this;
+        //this.coin_creator.map_creator = this;
+        //this.enemy_creator.map_creator = this;
 
-		if(! this.last_block.is_created) {	// last_blockが未作成の場合
-			// ブロックの位置をPlayerと同じにする
-			block_position = this.player.transform.position;
-			// ブロックのX位置を半画面分、左に移動
-			block_position.x -= BLOCK_WIDTH * ( (float)BLOCK_NUM_IN_SCREEN / 2.0f );
-			// ブロックのY位置をゼロに
-			block_position.y = 0.0f;
-		} else {							// last_blockが作成済みの場合
-			// 今回作るブロックの位置を前回作ったブロックと同じに
-			block_position = this.last_block.position;
-		}
+        //
 
-		// ブロックを1ブロック分、右に移動
-		block_position.x += BLOCK_WIDTH;
+        this.create_floor_block();
+    }
 
-		// BlockCreatorスクリプトのcreateBlock()メソッドに作成指示
-		// これまでのコードで設定したblock_positionを渡す
-		//this.block_creator.createBlock(block_position);
+    void Update()
+    {
+        // DebugPrint.print("time  " + ((int)this.game_root.getPlayTime()).ToString());
+        // DebugPrint.print("speed " + (this.level_control.getPlayerSpeed()).ToString());
+        // DebugPrint.print("level " + this.level_control.current_level.ToString());
 
-		//this.level_control.update();	// LevelControlを更新
-		this.level_control.update(this.game_root.getPlayTime());
+        // -------------------------------------------------------------------- //
+        // プレイヤーと『最後につくったブロック』の距離がある程度近づいたら
+        // 次のブロックを作る.
 
-		// level_controlに置かれたcurrent_block（今作るブロックの情報）の
-		// height（高さ）をシーン上の座標に変換
-		block_position.y = level_control.current_block.height * BLOCK_HEIGHT;
+        float block_generate_x = this.player.transform.position.x;
 
-		//今回作るブロックに関する情報を変数currentに格納
-		LevelControl.CreationInfo current = this.level_control.current_block;
+        // プレイヤーの前方（左の方、だいたい画面の左端）.
+        block_generate_x += BLOCK_WIDTH * ((float)BLOCK_NUM_IN_SCREEN + 1) / 2.0f;
 
-		// 今回作るブロックが床なら
-		if(current.block_type == Block.TYPE.FLOOR) {
-			// block_positionの位置にブロックを実際に作成
-			this.block_creator.createBlock(block_position);
-		}
+        // 無限ループ防止用カウンター.
+        int fail_safe_count = 100;
 
-		// last_blockの位置を今回の位置に更新
-		this.last_block.position = block_position;
-		// ブロック作成済みのためlast_blockのis_createdをtrueに
-		this.last_block.is_created = true;
-	}
+        while (this.last_block.position.x < block_generate_x)
+        {
 
-		public bool isDelete(GameObject block_object) {
-		bool ret = false;	// 戻り値
+            this.create_floor_block();
 
-		// Playerから半画面分左の位置
-		// これが消えるべきか否かを決めるしきい値
-		float left_limit = this.player.transform.position.x
-			- BLOCK_WIDTH * ((float)BLOCK_NUM_IN_SCREEN / 2.0f);
+            // プログラムにバグがあっても無限ループになってしまわないよう、
+            // ある程度以上実行したら強制的に打ち切る.
 
-		// ブロックの位置がしきい値より小さい（左）なら
-		if (block_object.transform.position.x < left_limit) {
-			ret = true;		// 戻り値をtrue(消す)に
-		}
+            fail_safe_count--;
 
-		return(ret);
-	}
+            if (fail_safe_count <= 0)
+            {
 
+                break;
+            }
+        }
+    }
+
+    // ================================================================ //
+
+    // ブロック/コインを消す？.
+    public bool isDelete(GameObject block_object)
+    {
+        bool ret = false;
+
+        float left_limit = this.player.transform.position.x - BLOCK_WIDTH * ((float)BLOCK_NUM_IN_SCREEN / 2.0f);
+
+        // プレイヤーよりも一定距離以上左側になったら
+        // （画面左端から外に出たら）消す.
+        if (block_object.transform.position.x < left_limit)
+        {
+
+            ret = true;
+        }
+
+        // 画面の下に消えたら消す.
+        if (block_object.transform.position.y < PlayerControl.NARAKU_HEIGHT)
+        {
+
+            ret = true;
+        }
+
+        return (ret);
+    }
+
+    // ================================================================ //
+
+    // ブロックを作る.
+    private void create_floor_block()
+    {
+        Vector3 block_position;
+
+        // -------------------------------------------------------------------- //
+        // 次につくるブロックのタイプ（床 or 穴）を決める.
+
+        this.level_control.update(this.game_root.getPlayTime());
+
+        // -------------------------------------------------------------------- //
+        // ブロックの位置.
+
+        // 『最後に（直前に）』作ったブロックの位置を取得する.
+        if (!this.last_block.is_created)
+        {
+
+            // まだひとつもブロックを作っていないときは、
+            // 『プレイヤーの後ろ、スクリーンの左端』を基準にする.
+            block_position = this.player.transform.position;
+            block_position.x -= BLOCK_WIDTH * ((float)BLOCK_NUM_IN_SCREEN / 2.0f);
+
+        }
+        else
+        {
+
+            block_position = this.last_block.position;
+        }
+
+        block_position.x += BLOCK_WIDTH;
+        block_position.y = (float)this.level_control.current_block.height * BLOCK_HEIGHT;
+
+        // -------------------------------------------------------------------- //
+        // ブロックのゲームオブジェクトを作る.
+
+        LevelControl.CreationInfo current = this.level_control.current_block;
+
+        this.block_creator.createBlock(current, block_position);
+
+        // -------------------------------------------------------------------- //
+        // コインを作る.
+
+        //LevelData level_data = this.level_control.getCurrentLevelData();
+
+        //this.coin_creator.createCoin(level_data, this.level_control.block_count, block_position);
+
+        // -------------------------------------------------------------------- //
+        // おじゃまキャラを作る.
+
+        //this.enemy_creator.createEnemy(level_data, this.level_control.block_count, block_position);
+
+        // -------------------------------------------------------------------- //
+        // 『最後に作ったブロックの位置』を更新しておく.
+
+        this.last_block.position = block_position;
+        this.last_block.is_created = true;
+
+        // -------------------------------------------------------------------- //
+    }
 }
