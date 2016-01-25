@@ -33,7 +33,6 @@ public class LoadTextData : MonoBehaviour {
         System.Random rnd = new System.Random();
         idx = rnd.Next(mLines.Length - 1);
         mText.text = mLines[idx];
-        Debug.Log(mLines[idx]);
     }
 
     //void ExportText()

@@ -16,6 +16,7 @@ public class PlayerControl : MonoBehaviour
         RUN = 0, // 走る.
         JUMP, // ジャンプ.
         MISS, // ミス.
+        END, // 時間切れ
         NUM, // 状態が何種類あるかを示す（＝3）.
     };
 
@@ -37,6 +38,7 @@ public class PlayerControl : MonoBehaviour
     private float mDuration = 0.0f;  //音声が入力されている時間を格納
     private Vector3 mJumpLimit = Vector3.up * 20.0f;
     private csv_GetVolume mGetVolume = null;
+    private LimitTime mLimitTime = null;
 
     void Start()
     {
@@ -44,6 +46,7 @@ public class PlayerControl : MonoBehaviour
         mRigidbody = GetComponent<Rigidbody>();
         mGetVolume = GameObject.Find("Main Camera").GetComponent<csv_GetVolume>();
         mPlayerAnimation = transform.GetComponentInChildren<Animation>();
+        mLimitTime = GameObject.Find("CanvasTime/Timer").GetComponent<LimitTime>();
     }
 
 
@@ -93,6 +96,11 @@ public class PlayerControl : MonoBehaviour
                         next_step = STEP.MISS; // 「ミス」状態にする.
 
                     }
+                    
+                    if(mLimitTime.remainTime <= 0)
+                    {
+                        next_step = STEP.END;
+                    }
                 }
                 break;
 
@@ -103,6 +111,11 @@ public class PlayerControl : MonoBehaviour
                     if (transform.position.y < NARAKU_HEIGHT)
                     {
                         next_step = STEP.MISS; // 「ミス」状態にする.
+                    }
+
+                    if (mLimitTime.remainTime <= 0)
+                    {
+                        next_step = STEP.END;
                     }
                 }
                 break;
@@ -144,7 +157,7 @@ public class PlayerControl : MonoBehaviour
                                }
                                */
                                // click_timerが0以上、CLICK_GRACE_TIME以下ならば.
-                    if (/*0.0f <= click_timer && click_timer <= CLICK_GRACE_TIME*/ GetMicInput.loudness >= 3.0f)
+                    if (/*0.0f <= click_timer && click_timer <= CLICK_GRACE_TIME*/ GetMicInput.loudness >= 1.0f)
                     {
                         if (is_landed)
                         { // 着地しているならば.
@@ -179,10 +192,10 @@ public class PlayerControl : MonoBehaviour
             { // 更新された「現在の状態」が.
                 case STEP.JUMP: // 「ジャンプ」の場合.
                     // ジャンプの高さからジャンプの初速を計算（オマジナイ）.
-                    velocity.y = Mathf.Sqrt(2.0f * 9.8f * JUMP_HEIGHT_MAX);
                     if (GetMicInput.loudness > 15.0f) velocity.y = Mathf.Sqrt(2.0f * 9.8f * JUMP_HEIGHT_MAX) * 5.0f;
                     if (GetMicInput.loudness > 7.5f) velocity.y = Mathf.Sqrt(2.0f * 9.8f * JUMP_HEIGHT_MAX) * 3.5f;
                     if (GetMicInput.loudness < 5.0f) velocity.y = Mathf.Sqrt(2.0f * 9.8f * JUMP_HEIGHT_MAX) * 0.35f;
+                    velocity.y = Mathf.Sqrt(2.0f * 9.8f * JUMP_HEIGHT_MAX);
                     // 「ボタンが離されたフラグ」をクリアーする.
                     is_key_released = false;
                     break;
@@ -269,6 +282,16 @@ public class PlayerControl : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, 4, transform.position.z);
                 mRigidbody.velocity = new Vector3(mRigidbody.velocity.x, 0, mRigidbody.velocity.z);
                 next_step = STEP.RUN;
+                break;
+
+            case STEP.END:  //リザルトに遷移させる
+                if(is_landed == true)
+                {
+                    velocity.x = 0; //キャラクターを停止
+                    next_step = STEP.NONE;
+                }
+                Application.LoadLevel("Result");
+
                 break;
 
         }
