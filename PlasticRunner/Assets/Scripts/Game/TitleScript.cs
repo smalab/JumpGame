@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class TitleScript : MonoBehaviour {
 	public void BackTitle () {
-		Application.LoadLevel("Title");
+        SceneManager.LoadScene("Title");
 	}
 
 	public void StartGame () {
-		Application.LoadLevel("GameMain");
+        SceneManager.LoadScene("GameMain");
 	}
 }
