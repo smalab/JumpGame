@@ -35,7 +35,7 @@ public class PlayerControl : MonoBehaviour
     private Animation mPlayerAnimation = null; //プレイヤーのアニメーション設定
     private Vector3 mJumpLimit = Vector3.up * 20.0f; //ジャンプの高さの上限
     private csv_GetVolume mGetVolume = null; //音量データを取得
-    private LimitTime mLimitTime = null; //制限時間の設定
+    private TimeManager mTimeManager = null; //制限時間の設定
     private float WaitTime;
 
     void Start()
@@ -44,7 +44,7 @@ public class PlayerControl : MonoBehaviour
         mRigidbody = GetComponent<Rigidbody>();
         mGetVolume = GameObject.Find("Main Camera").GetComponent<csv_GetVolume>();
         mPlayerAnimation = transform.GetComponentInChildren<Animation>();
-        mLimitTime = GameObject.Find("CanvasTime/Timer").GetComponent<LimitTime>();
+        mTimeManager = GameObject.Find("CanvasTime/Timer").GetComponent<TimeManager>();
     }
 
 
@@ -83,7 +83,7 @@ public class PlayerControl : MonoBehaviour
         Vector3 velocity = mRigidbody.velocity; //速度を設定
         current_speed = level_control.getPlayerSpeed();
         check_landed(); //着地状態かどうかをチェック
-        if (mLimitTime.remainTime == 0) step = STEP.END;
+        if (mTimeManager.remainTime == 0) step = STEP.END;
 
         switch (step)
         {
@@ -97,7 +97,7 @@ public class PlayerControl : MonoBehaviour
 
                     }
 
-                    if (mLimitTime.remainTime <= 0)
+                    if (mTimeManager.remainTime <= 0)
                     {
                         next_step = STEP.END;
                     }
@@ -113,7 +113,7 @@ public class PlayerControl : MonoBehaviour
                         next_step = STEP.MISS; // 「ミス」状態にする.
                     }
 
-                    if (mLimitTime.remainTime <= 0)
+                    if (mTimeManager.remainTime <= 0)
                     {
                         next_step = STEP.END;
                     }

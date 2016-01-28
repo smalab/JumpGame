@@ -16,30 +16,20 @@ public class SignManager : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
-        
-    }
+	void Update () {}
 
-    //OnTriggerEnterで呼び出し
-    //(課題)Instantiateせずに看板の文字だけ消して、座標を変更してあげるように = MoveSign()
+
     void CreateSign()
     {
-        tmpObject = (GameObject) Instantiate(mSign, Vector3.zero, Quaternion.identity);
-        tmpObject.transform.position = new Vector3(mSignPos.x + Random.Range(30.0f, 45.0f), 
+        tmpObject = (GameObject) Instantiate(mSign, Vector3.zero, Quaternion.identity); //次の看板を複製
+        //複製した看板の座標を指定
+        tmpObject.transform.position = new Vector3(mSignPos.x + Random.Range(25.0f, 35.0f), 
                                                    Random.Range(2.0f, 4.0f), tmpObject.transform.position.z);
         tmpObject.transform.Rotate(new Vector3(0f, 90f, 0f));
+        //次に複製するための座標を保持
         mSignPos = tmpObject.transform.position;
     }
 
-    // void MoveSign()
-    // {
-    //     mSign.transform.Translate(new Vector3(mSignPos.x + Random.Range(30.0f, 45.0f),
-    //                               Random.Range(2.0f, 4.0f), mSign.transform.position.z));
-    //     mSignPos = mSign.transform.position;
-    //     Debug.Log(mSignPos);
-    // }
-
-    //Startで呼び出し
     void CreatSign(Vector3 aVector3)
     {
         tmpObject = (GameObject) Instantiate(mSign, aVector3, mSign.transform.rotation);

@@ -2,11 +2,9 @@
 using UnityEngine.UI;
 
 public class LoadTextData : MonoBehaviour {
-    //Text mTextSign = (Resources.Load("Prefabs/CanvasSign/Panel/Text")) as Text;
     TextAsset mAlphabetTextAsset = null;
     string mAlphabetText = "";
     string[] mLines = null;
-    //static public string mExportText = "";
     static public int idx = 0;
     static public Text mText = null;
 
@@ -15,7 +13,6 @@ public class LoadTextData : MonoBehaviour {
         mText = GetComponent<Text>();
         LoadText();
         ShowText();
-        //ExportText();
     }
 	
 	// Update is called once per frame
@@ -23,23 +20,18 @@ public class LoadTextData : MonoBehaviour {
 
     void LoadText ()
     {
+        //Resourceフォルダからテキストファイルのデータをロード
         mAlphabetTextAsset = Resources.Load("Text/Alphabet") as TextAsset;
         mAlphabetText = mAlphabetTextAsset.text;
+        //データを改行毎に分割して配列に格納
         mLines = mAlphabetText.Split('\n');
     }
 
+    //看板にアルファベットを表示させる
     void ShowText()
     {
         System.Random rnd = new System.Random();
         idx = rnd.Next(mLines.Length - 1);
         mText.text = mLines[idx];
     }
-
-    //void ExportText()
-    //{
-    //    if (mExportText == "")
-    //        mExportText = mLines[idx];
-    //    else
-    //        mExportText = "";
-    //}
 }
