@@ -5,7 +5,10 @@ public class BlockControl : MonoBehaviour
 {
     public MapCreator map_creator = null;
 
-    void Start() {}
+    void Start()
+    {
+        map_creator = GameObject.Find("GameRoot").GetComponent<MapCreator>();
+    }
 
     void Update()
     {

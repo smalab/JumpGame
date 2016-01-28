@@ -46,7 +46,7 @@ public class SoundControl : MonoBehaviour {
 			this.bgmsource[i] = this.gameObject.AddComponent<AudioSource>();
 			this.bgmsource[i].clip = this.bgmclip[i];
 			this.bgmsource[i].loop = true;
-            bgmsource[i].volume = 0.1f;
+            bgmsource[i].volume = 0.0f;
 		}
 
 	}
