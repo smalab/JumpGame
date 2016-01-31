@@ -1,0 +1,15 @@
+{
+	"solution_file": "./PlasticRunner.sln",
+    "folders":
+    [
+        {
+            "follow_symlinks": true,
+            "path": "Assets/Scripts",
+            "name": "PlasticRunner_Scripts",
+            "file_include_patterns":
+            [
+                "*.cs"
+            ]
+        }
+    ],
+}
