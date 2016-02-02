@@ -24,6 +24,6 @@ public class PlayMP3 : MonoBehaviour {
     {
         //看板の文字に応じた音声の再生
         mAudiosource.clip = mAudioclip[LoadTextData.idx];
-        mAudiosource.PlayOneShot(mAudiosource.clip);     
+        mAudiosource.PlayOneShot(mAudiosource.clip);
     }
 }

@@ -24,5 +24,3 @@ public class TimeManager : MonoBehaviour {
 		GetComponent<Text>().text = ((int) m_time).ToString();
 	}
 }
-
-
