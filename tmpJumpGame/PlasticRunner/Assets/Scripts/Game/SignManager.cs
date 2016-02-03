@@ -12,12 +12,12 @@ public class SignManager : MonoBehaviour
     void Start()
     {
         mSign = (Resources.Load("Prefabs/CanvasSign")) as GameObject;
-        CreatSign(new Vector3(15.0f, 3.0f, 0.0f));
+        StartCreatSign(new Vector3(15.0f, 3.0f, 0.0f));
 
     }
 
     // Update is called once per frame
-    void Update() { }
+    void Update() {}
 
 
     void CreateSign()
@@ -31,7 +31,8 @@ public class SignManager : MonoBehaviour
         mSignPos = tmpObject.transform.position;
     }
 
-    void CreatSign(Vector3 aVector3)
+    //Start内でのみ呼び出し
+    void StartCreatSign(Vector3 aVector3)
     {
         tmpObject = (GameObject)Instantiate(mSign, aVector3, mSign.transform.rotation);
         mSignPos = new Vector3(mSignPos.x + Random.Range(30.0f, 45.0f),
