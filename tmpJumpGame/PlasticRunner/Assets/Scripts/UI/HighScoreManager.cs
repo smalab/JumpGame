@@ -7,12 +7,19 @@ public class HighScoreManager : MonoBehaviour
     private string mRankingPrefKey = "ranking";
     private int mRankingNum = 5;
     private int[] mRankedScore = null;
-    public Text mScoreText = null;
+
+    public Text mHighScoreText = null; //ハイスコアを表示させるテキストオブジェクト
+    private int mHighScore; //ハイスコア
+    private string mHighScoreKey = "HIGH SCORE"; //ハイスコア保存キー
 
     // Use this for initialization
     void Start()
     {
-            mScoreText = GetComponent<Text>();
+            mHighScoreText = GetComponent<Text>();
+            //保存しているハイスコアをキーで呼び出して取得
+            //なければ0を返す
+            mHighScore = PlayerPrefs.GetInt(mHighScoreKey, 0);
+            mHighScoreText.text = "HighScore: " + mHighScore.ToString();
     }
 
     // Update is called once per frame
@@ -20,7 +27,7 @@ public class HighScoreManager : MonoBehaviour
 
     //ランキングをPlayerPrefsから取得
     //mRankedScoreに格納
-    void GetRanking()
+    public void GetRanking()
     {
         var _ranking = PlayerPrefs.GetString(mRankingPrefKey);
         if (_ranking.Length > 0)
@@ -35,7 +42,7 @@ public class HighScoreManager : MonoBehaviour
     }
 
     //新しくスコアを保存する
-    void SaveRanking(int aNewScore)
+    public void SaveRanking(int aNewScore)
     {
         if (mRankedScore.Length != 0)
         {
@@ -57,20 +64,23 @@ public class HighScoreManager : MonoBehaviour
     }
 
     //ランキングの削除
-    void DeleteRanking()
+    public void DeleteRanking()
     {
         PlayerPrefs.DeleteKey(mRankingPrefKey);
     }
 
     //ランキングの表示
-    void ShowRanking()
+    public void ShowRanking()
     {
         string[] RankingString = null;
         for (int i = 0; i < mRankedScore.Length; i++)
         {
             RankingString[i] = mRankedScore[i].ToString();
-            mScoreText.text = RankingString[i];
         }
     }
 
+    void ChangeHighScore()
+    {
+
+    }
 }

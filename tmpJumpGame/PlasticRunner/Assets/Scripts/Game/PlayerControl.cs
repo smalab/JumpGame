@@ -25,7 +25,7 @@ public class PlayerControl : MonoBehaviour
     public STEP next_step = STEP.NONE; // Playerの次の状態.
     public float step_timer = 0.0f; // 経過時間.
     private bool is_landed = false; // 着地しているかどうか.
-    private bool is_key_released = false; // ボタンが離されているかどうか.    
+    private bool is_key_released = false; // ボタンが離されているかどうか.
     public static float NARAKU_HEIGHT = -5.0f;
     public float current_speed = 0.0f; // 現在のスピード.
     public LevelControl level_control = null; // LevelControlを保持.
@@ -33,7 +33,7 @@ public class PlayerControl : MonoBehaviour
 
     private Rigidbody mRigidbody = null;
     private Animation mPlayerAnimation; //プレイヤーのアニメーション
-    private Vector3 mJumpLimit = Vector3.up * 20.0f; //ジャンプの高さの上限
+    //private Vector3 mJumpLimit = Vector3.up * 20.0f; //ジャンプの高さの上限
     private csv_GetVolume mGetVolume = null; //音量データを取得
     private TimeManager mTimeManager = null; //制限時間の設定
     private float WaitTime; //リザルトシーンに遷移するまでの待機時間
@@ -86,7 +86,7 @@ public class PlayerControl : MonoBehaviour
 
         switch (step)
         {
-            case STEP.RUN:                
+            case STEP.RUN:
                     mPlayerAnimation.CrossFade("02_Move", 0.1f);
 
                     // 現在の位置がしきい値よりも下ならば.
@@ -99,10 +99,10 @@ public class PlayerControl : MonoBehaviour
                     if (mTimeManager.remainTime <= 0)
                     {
                         next_step = STEP.END;
-                    }                
+                    }
                 break;
 
-            case STEP.JUMP:                
+            case STEP.JUMP:
                     mPlayerAnimation.CrossFade("03_jumpup", 0.1f);
 
                     // 現在の位置がしきい値よりも下ならば.
@@ -114,7 +114,7 @@ public class PlayerControl : MonoBehaviour
                     if (mTimeManager.remainTime <= 0)
                     {
                         next_step = STEP.END;
-                    }                
+                    }
                 break;
         }
 

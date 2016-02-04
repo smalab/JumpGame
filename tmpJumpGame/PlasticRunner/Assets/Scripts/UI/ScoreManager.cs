@@ -4,13 +4,17 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    int mScore = 0;
-    
+    int mScore = 100;
+    public int proScore
+    {
+        get {return mScore;}
+    }
+
 	// Use this for initialization
 	void Start () {
         GetComponentInChildren<Text>().text = mScore.ToString();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {}
 
