@@ -9,7 +9,7 @@ public class CameraScript : MonoBehaviour {
 //********** 開始 **********//
     public Text highScoreText; //ハイスコアを表示するTextオブジェクト
 //********** 終了 **********//
-    public GameOverScript gameOverScript;
+    //public GameOverScript gameOverScript;
     private int score = 0;
     private int scoreUpPos = 3;
     private Transform playerTrans;
@@ -58,7 +58,7 @@ public class CameraScript : MonoBehaviour {
 
         if (playerTrans.position.y <= currentCameraHeight - 6) {
 
-            gameOverScript.Lose();
+            //gameOverScript.Lose();
 
             Destroy(player);
         }

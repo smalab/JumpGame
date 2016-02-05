@@ -24,7 +24,7 @@ public class SignManager : MonoBehaviour
     {
         tmpObject = (GameObject)Instantiate(mSign, Vector3.zero, Quaternion.identity); //次の看板を複製
         //複製した看板の座標を指定
-        tmpObject.transform.position = new Vector3(mSignPos.x + Random.Range(25.0f, 35.0f),
+        tmpObject.transform.position = new Vector3(mSignPos.x + Random.Range(15.0f, 20.0f),
                                                    Random.Range(2.0f, 4.0f), tmpObject.transform.position.z);
         tmpObject.transform.Rotate(new Vector3(0f, 90f, 0f));
         //次に複製するための座標を保持

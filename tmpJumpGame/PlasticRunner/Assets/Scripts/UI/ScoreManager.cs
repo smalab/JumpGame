@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    int mScore = 100;
+    int mScore = 0;
     public int proScore
     {
         get {return mScore;}
